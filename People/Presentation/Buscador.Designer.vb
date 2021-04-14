@@ -125,9 +125,9 @@ Partial Class Buscador
     Friend WithEvents BuscadorTextBox As TextBox
     Friend WithEvents textBuscador As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents ListArtists As ListBox
     Friend WithEvents Label2 As Label
-    Friend WithEvents ListSongs As ListBox
-    Friend WithEvents ListAlbums As ListBox
     Friend WithEvents Label3 As Label
+    Public WithEvents ListArtists As ListBox
+    Public WithEvents ListSongs As ListBox
+    Public WithEvents ListAlbums As ListBox
 End Class

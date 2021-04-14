@@ -22,4 +22,8 @@
         Me.PlayBackDAO.Read(Me)
     End Sub
 
+    Public Function InsertPlayBack() As Integer
+        Return Me.PlayBackDAO.Insert(Me)
+    End Function
+
 End Class

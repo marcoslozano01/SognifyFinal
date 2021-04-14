@@ -1,9 +1,14 @@
 ﻿Public Class Buscador
+    Dim song As Song
+    Dim artist As Artist
+    Dim album As Album
+    Public Property user As User
 
+    Public Sub New(ByRef user As User)
+        InitializeComponent()
+        Me.user = user
+    End Sub
     Private Sub BuscadorTextBox_TextChanged(sender As Object, e As EventArgs) Handles BuscadorTextBox.TextChanged
-        Dim song As Song
-        Dim artist As Artist
-        Dim album As Album
 
         Dim s As Song = New Song
         Dim a As Artist = New Artist
@@ -30,6 +35,21 @@
                 ListAlbums.Items.Add(album.aName)
             Next
         End If
+
+    End Sub
+
+    Private Sub ListAlbums_DoubleClick(sender As Object, e As EventArgs) Handles ListAlbums.DoubleClick
+
+    End Sub
+
+    Private Sub ListSongs_DoubleClick(sender As Object, e As EventArgs) Handles ListSongs.DoubleClick
+        Dim song As Song = New Song(ListSongs.SelectedItem.ToString)
+        song.ReadSongByName()
+        Dim f As Form = New SongForm(song, user)
+        f.Show()
+    End Sub
+
+    Private Sub ListArtists_DoubleClick(sender As Object, e As EventArgs) Handles ListArtists.DoubleClick
 
     End Sub
 

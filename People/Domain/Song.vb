@@ -14,12 +14,21 @@
         Me.idSong = id
     End Sub
 
+    Public Sub New(name As String)
+        Me.SongDAO = New SongDAO
+        Me.sName = name
+    End Sub
+
     Public Sub ReadAllSongs(path As String)
         Me.SongDAO.ReadAll(path)
     End Sub
 
     Public Sub ReadSong()
         Me.SongDAO.Read(Me)
+    End Sub
+
+    Public Sub ReadSongByName()
+        Me.SongDAO.ReadByName(Me)
     End Sub
 
     Public Sub ReadSearcher(chain As String)

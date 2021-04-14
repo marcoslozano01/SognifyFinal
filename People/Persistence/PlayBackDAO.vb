@@ -28,5 +28,10 @@
         Next
     End Sub
 
+    Public Function Insert(ByVal p As PlayBack) As Integer
+        MessageBox.Show("INSERT INTO PLAYBACKS (user,song,plDate) VALUES ('" & p.user.Email & "'," & p.song.idSong & ",'" & p.plDate & "');")
+        Return DBBroker.GetBroker.Change("INSERT INTO PLAYBACKS VALUES ('" & Nothing & "','" & p.user.Email & "'," & p.song.idSong & ",'" & p.plDate & "');")
+    End Function
+
 
 End Class

@@ -115,6 +115,12 @@
     <Compile Include="Presentation\Login.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Presentation\SongForm.Designer.vb">
+      <DependentUpon>SongForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\SongForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -128,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Login.resx">
       <DependentUpon>Login.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\SongForm.resx">
+      <DependentUpon>SongForm.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -43,4 +43,14 @@
         Next
     End Sub
 
+    Public Sub ReadByName(ByRef s As Song)
+        Dim col As Collection : Dim aux As Collection
+        col = DBBroker.GetBroker.Read("SELECT * FROM SONGS WHERE sName='" & s.sName & "';")
+        For Each aux In col
+            s.idSong = CType(aux(1).ToString, Integer)
+            s.album = New Album(CType(aux(3).ToString, Integer))
+            s.length = CType(aux(4).ToString, Integer)
+        Next
+    End Sub
+
 End Class

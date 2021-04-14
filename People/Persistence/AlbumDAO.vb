@@ -22,7 +22,7 @@
 
     Public Sub Read(ByRef a As Album)
         Dim col As Collection : Dim aux As Collection
-        col = DBBroker.GetBroker.Read("SELECT * FROM ALBUMS WHERE idAlbum='" & a.idAlbum & "';")
+        col = DBBroker.GetBroker.Read("SELECT * FROM ALBUMS WHERE idAlbum=" & a.idAlbum & ";")
         For Each aux In col
             a.aName = aux(2).ToString
             a.releaseDate = aux(3).ToString

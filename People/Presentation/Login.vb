@@ -2,6 +2,7 @@
     Property ofdPath1 As OpenFileDialog = New OpenFileDialog
     Dim filePath As String
     Dim user As User
+    Dim usr As User
 
 
 
@@ -23,6 +24,7 @@
             For Each user In u.UserDAO.Users
                 If user.Email = TextBoxEmail.Text Then
                     check = True
+                    usr = New User(TextBoxEmail.Text)
                 End If
             Next
         Catch ex As Exception
@@ -31,9 +33,13 @@
 
         If check = True Then
             Me.Hide()
-            Buscador.Show()
+            usr.ReadUser()
+            Dim b As Buscador = New Buscador(usr)
+            b.Show()
         Else
             MessageBox.Show("Login incorrect")
         End If
     End Sub
+
+
 End Class
