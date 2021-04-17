@@ -29,8 +29,12 @@
         Return Me.PlayBackDAO.Insert(Me)
     End Function
 
-    Public Function deletePlayBack() As Integer
-        Return Me.PlayBackDAO.Delete(Me)
+    Public Function deletePlayBackByUser() As Integer
+        Return Me.PlayBackDAO.DeleteByUser(Me)
+    End Function
+
+    Public Function deletePlayBackBySong() As Integer
+        Return Me.PlayBackDAO.DeleteBySong(Me)
     End Function
 
 End Class

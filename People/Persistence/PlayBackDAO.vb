@@ -45,8 +45,12 @@
         Return DBBroker.GetBroker.Change("INSERT INTO [PLAYBACKS] ([user],[song],[plDate]) VALUES ('" & p.user.Email & "'," & p.song.idSong & ",#" & p.plDate & "#);")
     End Function
 
-    Public Function Delete(ByVal p As PlayBack) As Integer
+    Public Function DeleteByUser(ByVal p As PlayBack) As Integer
         Return DBBroker.GetBroker.Change("DELETE FROM PLAYBACKS WHERE user='" & p.user.Email & "';")
+    End Function
+
+    Public Function DeleteBySong(ByVal p As PlayBack) As Integer
+        Return DBBroker.GetBroker.Change("DELETE FROM PLAYBACKS WHERE song=" & p.song.idSong & ";")
     End Function
 
 End Class

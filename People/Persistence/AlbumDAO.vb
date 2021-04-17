@@ -59,4 +59,11 @@
         Return DBBroker.GetBroker.Change("INSERT INTO [ALBUMS] ([aName],[releaseDate],[artist],[cover]) VALUES ('" & al.aName & "',#" & al.releaseDate & "#," & al.artist.idArtist & ",'" & al.cover & "');")
     End Function
 
+    Public Function DeleteByArtist(ByVal al As Album) As Integer
+        Return DBBroker.GetBroker.Change("DELETE FROM ALBUMS WHERE artist=" & al.artist.idArtist & ";")
+    End Function
+
+    Public Function Delete(ByVal al As Album) As Integer
+        Return DBBroker.GetBroker.Change("DELETE FROM ALBUMS WHERE IdAlbum=" & al.idAlbum & ";")
+    End Function
 End Class

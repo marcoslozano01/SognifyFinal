@@ -38,4 +38,13 @@
     Public Function InsertAlbum() As Integer
         Return Me.AlbumDAO.Insert(Me)
     End Function
+
+    Public Function DeleteAlbumByArtist() As Integer
+        Return Me.AlbumDAO.DeleteByArtist(Me)
+    End Function
+
+    Public Function DeleteAlbum() As Integer
+        Return Me.AlbumDAO.Delete(Me)
+    End Function
+
 End Class

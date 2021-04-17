@@ -50,8 +50,16 @@
         Return Me.ArtistDAO.Insert(Me)
     End Function
 
-    Public Function deleteFavArtist() As Integer
-        Return Me.ArtistDAO.DeleteFav(Me)
+    Public Function DeleteArtist() As Integer
+        Return Me.ArtistDAO.Delete(Me)
+    End Function
+
+    Public Function deletefavArtistByUser() As Integer
+        Return Me.ArtistDAO.DeleteFavByUser(Me)
+    End Function
+
+    Public Function deletefavArtistByArtist() As Integer
+        Return Me.ArtistDAO.DeleteFavByArtist(Me)
     End Function
 
 End Class

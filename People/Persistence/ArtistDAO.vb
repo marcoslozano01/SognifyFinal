@@ -79,11 +79,16 @@
         Return DBBroker.GetBroker.Change("INSERT INTO [ARTISTS] ([aName],[country],[image]) VALUES ('" & a.aName & "','" & a.country & "','" & a.image & "');")
     End Function
 
-    Public Function Delete(ByVal f As Artist) As Integer
-        Return DBBroker.GetBroker.Change("DELETE FROM FAV_ARTISTS WHERE artist='" & f.idArtist & "';")
+    Public Function Delete(ByVal a As Artist) As Integer
+        Return DBBroker.GetBroker.Change("DELETE FROM ARTISTS WHERE IdArtist=" & a.idArtist & ";")
     End Function
-    Public Function DeleteFav(ByVal f As Artist) As Integer
-        Return DBBroker.GetBroker.Change("DELETE FROM FAV_ARTISTS WHERE artist='" & f.idArtist & "';")
+    Public Function DeleteFavByUser(ByVal f As Artist) As Integer
+        Return DBBroker.GetBroker.Change("DELETE FROM FAV_ARTISTS WHERE user='" & f.user.Email & "';")
     End Function
+
+    Public Function DeleteFavByArtist(ByVal f As Artist) As Integer
+        Return DBBroker.GetBroker.Change("DELETE FROM FAV_ARTISTS WHERE artist=" & f.artist.idArtist & ";")
+    End Function
+
 
 End Class

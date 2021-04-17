@@ -39,4 +39,12 @@
         Return Me.SongDAO.Insert(Me)
     End Function
 
+    Public Function DeleteByAlbum() As Integer
+        Return Me.SongDAO.DeleteByAlbum(Me)
+    End Function
+
+    Public Function Delete() As Integer
+        Return Me.SongDAO.Delete(Me)
+    End Function
+
 End Class
