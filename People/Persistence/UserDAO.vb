@@ -33,4 +33,8 @@
     Public Function Delete(ByVal u As User) As Integer
         Return DBBroker.GetBroker.Change("DELETE FROM USERS WHERE Email='" & u.Email & "';")
     End Function
+
+    Public Function Insert(ByVal u As User) As Integer
+        Return DBBroker.GetBroker.Change("INSERT INTO [USERS]  VALUES ('" & u.Email & "','" & u.uName & "','" & u.uSurname & "',#" & u.birthdate & "#);")
+    End Function
 End Class

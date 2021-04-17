@@ -194,7 +194,6 @@
             fav_artist.deletefavArtistByUser()
             playback.deletePlayBackByUser()
             user.DeleteUser()
-            ListBox.Items.RemoveAt(ListBox.SelectedIndex)
         Catch ex As Exception
             MessageBox.Show(ex.ToString)
         End Try
@@ -211,7 +210,6 @@
         Me.al.ReadAllAlbums(filePath)
         fav_artist.artist = New Artist(artist.idArtist)
         fav_artist.ReadArtist()
-
         Try
             For Each album In Me.al.AlbumDAO.Albums
                 album.artist.ReadArtist()
@@ -257,9 +255,9 @@
         Dim song As Song = New Song()
         Dim playBack = New PlayBack
         song.sName = sName
-        song.ReadSongByName()
-        playBack.song = song
         Try
+            song.ReadSongByName()
+            playBack.song = song
             playBack.deletePlayBackBySong()
             song.Delete()
         Catch ex As Exception
@@ -268,6 +266,67 @@
         clearBoxes()
 
     End Sub
+
+    Private Sub insertUser(email As String)
+        Me.user = New User(email)
+        user.uName = nameBox.Text
+        user.uSurname = surnameBox.Text
+        user.birthdate = birthDateBox.Text
+        Try
+            If user.insertUser <> 1 Then
+                MessageBox.Show("This user already exists")
+                Exit Sub
+            End If
+            ListBox.Items.Add(user.Email)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+    End Sub
+
+    Private Function insertArtist(aName As String) As Integer
+        Me.a = New Artist()
+        a.aName = artistBox.Text
+        a.country = countryBox.Text
+        Try
+            If a.InsertArtist <> 1 Then
+                MessageBox.Show("This artist already exist")
+                Exit Function
+            End If
+            ListBox.Items.Add(a.aName)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        a.ReadArtistByName()
+        Return a.idArtist
+    End Function
+
+    Private Sub insertAlbum(aName As String)
+        Me.al = New Album()
+        Dim artist = New Artist
+        al.aName = albumBox.Text
+        al.releaseDate = relaseDateBox.Text
+        artist.aName = artistBox.Text
+        artist.ReadArtistByName()
+        If artist.idArtist = 0 And countryBox.Enabled = False Then
+            MessageBox.Show("This artist doesnt exists")
+            initArtistBox()
+        Else
+            al.artist = New Artist(insertArtist(artistBox.Text))
+            MessageBox.Show(CType(al.artist.idArtist, String))
+            Try
+                If al.InsertAlbum <> 1 Then
+                    MessageBox.Show("This artist already exist")
+                    Exit Sub
+                End If
+                ListBox.Items.Add(al.aName)
+            Catch ex As Exception
+                MessageBox.Show(ex.Message)
+            End Try
+        End If
+    End Sub
+
+
+
     Private Sub deleteBtt_Click(sender As Object, e As EventArgs) Handles deleteBtt.Click
         Select Case ComboBox.SelectedIndex
             Case 0
@@ -290,12 +349,15 @@
                 'insertSong()
                 readallSongs()
             Case 1
-                'insertAlbum()
-                readallAlbums()
+                insertAlbum(albumBox.Text)
+                clearBoxes()
 
             Case 2
-                'insertArtist()
-                readallArtist()
+                insertArtist(artistBox.Text)
+                clearBoxes()
+            Case 3
+                insertUser(emailBox.Text)
+                clearBoxes()
         End Select
 
 

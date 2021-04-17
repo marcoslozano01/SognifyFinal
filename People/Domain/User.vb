@@ -28,7 +28,11 @@
     End Sub
 
     Public Function DeleteUser() As Integer
-        Me.UserDAO.Delete(Me)
+        Return Me.UserDAO.Delete(Me)
+    End Function
+
+    Public Function insertUser() As Integer
+        Return Me.UserDAO.Insert(Me)
     End Function
 
 

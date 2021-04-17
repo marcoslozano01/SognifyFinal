@@ -63,7 +63,7 @@
 
     Public Function Delete(ByVal s As Song) As Integer
 
-        DBBroker.GetBroker.Change("DELETE FROM SONGS WHERE IdSong=" & s.idSong & ";")
+        Return DBBroker.GetBroker.Change("DELETE FROM SONGS WHERE IdSong=" & s.idSong & ";")
 
     End Function
 
