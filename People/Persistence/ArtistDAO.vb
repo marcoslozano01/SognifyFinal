@@ -82,5 +82,8 @@
     Public Function Delete(ByVal f As Artist) As Integer
         Return DBBroker.GetBroker.Change("DELETE FROM FAV_ARTISTS WHERE artist='" & f.idArtist & "';")
     End Function
+    Public Function DeleteFav(ByVal f As Artist) As Integer
+        Return DBBroker.GetBroker.Change("DELETE FROM FAV_ARTISTS WHERE artist='" & f.idArtist & "';")
+    End Function
 
 End Class

@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Form1
+Partial Class login
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -209,7 +209,7 @@ Partial Class Form1
         '
         'nameBox
         '
-        Me.nameBox.Location = New System.Drawing.Point(624, -1)
+        Me.nameBox.Location = New System.Drawing.Point(624, 12)
         Me.nameBox.Name = "nameBox"
         Me.nameBox.Size = New System.Drawing.Size(176, 26)
         Me.nameBox.TabIndex = 41
@@ -217,7 +217,7 @@ Partial Class Form1
         'nameLabel
         '
         Me.nameLabel.AutoSize = True
-        Me.nameLabel.Location = New System.Drawing.Point(529, -1)
+        Me.nameLabel.Location = New System.Drawing.Point(528, 9)
         Me.nameLabel.Name = "nameLabel"
         Me.nameLabel.Size = New System.Drawing.Size(51, 20)
         Me.nameLabel.TabIndex = 40
@@ -302,7 +302,7 @@ Partial Class Form1
         Me.ChooseDB.Text = "ChooseDB"
         Me.ChooseDB.UseVisualStyleBackColor = True
         '
-        'Form1
+        'login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -337,7 +337,7 @@ Partial Class Form1
         Me.Controls.Add(Me.loginBtt)
         Me.Controls.Add(Me.TextBoxEmail)
         Me.Controls.Add(Me.ChooseDB)
-        Me.Name = "Form1"
+        Me.Name = "login"
         Me.Text = "Form1"
         Me.ResumeLayout(False)
         Me.PerformLayout()

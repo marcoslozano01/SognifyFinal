@@ -1,4 +1,4 @@
-﻿Class Form1
+﻿Public Class login
     Property ofdPath1 As OpenFileDialog = New OpenFileDialog
     Dim filePath As String
     Dim user As User
@@ -108,8 +108,78 @@
         End Try
     End Sub
 
+    Private Sub ListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox.SelectedIndexChanged
+        clearBoxes()
+        insertBtt.Enabled = False
+        deleteBtt.Enabled = True
+        updateBtt.Enabled = True
+        Select Case ComboBox.SelectedIndex
+            Case 0
+                readSong()
 
+            Case 1
+                readAlbum()
+            Case 2
+                readArtist()
+            Case 3
+                readuser()
+        End Select
+    End Sub
 
+    Public Sub readSong()
+        Dim song As Song = New Song(ListBox.SelectedIndex + 1)
+        Try
+            song.ReadSong()
+
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString)
+        End Try
+        nameBox.Text = song.sName
+        song.album.ReadAlbum()
+        albumBox.Text = song.album.aName
+        lengthBox.Text = CType(song.length, String)
+    End Sub
+
+    Public Sub readAlbum()
+        Dim album As Album = New Album(ListBox.SelectedIndex + 1)
+        Try
+            album.ReadAlbum()
+
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString)
+        End Try
+        albumBox.Text = album.aName
+        relaseDateBox.Text = album.releaseDate
+        album.artist.ReadArtist()
+        coverBox.Text = album.cover
+        artistBox.Text = album.artist.aName
+    End Sub
+
+    Public Sub readArtist()
+        Dim artist As Artist = New Artist(ListBox.SelectedIndex + 1)
+        Try
+            artist.ReadArtist()
+
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString)
+        End Try
+        artistBox.Text = artist.aName
+        countryBox.Text = artist.country
+    End Sub
+
+    Public Sub readuser()
+        Dim user As User = New User(ListBox.SelectedItem.ToString)
+        Try
+            user.ReadUser()
+
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString)
+        End Try
+        emailBox.Text = user.Email
+        nameBox.Text = user.uName
+        surnameBox.Text = user.uSurname
+        birthDateBox.Text = user.birthdate
+    End Sub
 
     Private Sub insertBtt_Click(sender As Object, e As EventArgs) Handles insertBtt.Click
         Select Case ComboBox.SelectedIndex
@@ -180,7 +250,7 @@
     Private Sub ComboBox_SelectedValueChanged(sender As Object, e As EventArgs) Handles ComboBox.SelectedValueChanged
         resetLabels()
         ListBox.Items.Clear()
-
+        clearBoxes()
         Select Case ComboBox.SelectedIndex
             Case 0
                 initSongBox()
@@ -219,4 +289,11 @@
         lengthLabel.Enabled = False
     End Sub
 
+    Private Sub ClearBtt_Click(sender As Object, e As EventArgs) Handles ClearBtt.Click
+        clearBoxes()
+        insertBtt.Enabled = True
+        updateBtt.Enabled = False
+        deleteBtt.Enabled = False
+
+    End Sub
 End Class
