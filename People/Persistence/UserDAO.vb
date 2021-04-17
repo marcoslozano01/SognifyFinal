@@ -29,4 +29,8 @@
             u.birthdate = aux(4).ToString
         Next
     End Sub
+
+    Public Function Delete(ByVal u As User) As Integer
+        Return DBBroker.GetBroker.Change("DELETE FROM USERS WHERE Email='" & u.Email & "';")
+    End Function
 End Class

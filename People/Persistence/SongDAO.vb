@@ -21,7 +21,7 @@
 
     Public Sub Read(ByRef s As Song)
         Dim col As Collection : Dim aux As Collection
-        col = DBBroker.GetBroker.Read("SELECT * FROM SONGS WHERE idSong='" & s.idSong & "';")
+        col = DBBroker.GetBroker.Read("SELECT * FROM SONGS WHERE idSong=" & s.idSong & ";")
         For Each aux In col
             s.sName = aux(2).ToString
             s.album = New Album(CType(aux(3).ToString, Integer))
@@ -52,5 +52,9 @@
             s.length = CType(aux(4).ToString, Integer)
         Next
     End Sub
+
+    Public Function Insert(ByVal s As Song) As Integer
+        Return DBBroker.GetBroker.Change("INSERT INTO [SONGS] ([sName],[Album],[length]) VALUES ('" & s.sName & "'," & s.album.idAlbum & "," & s.length & ");")
+    End Function
 
 End Class

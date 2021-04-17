@@ -30,6 +30,7 @@ Partial Class SongForm
         Me.BoxName = New System.Windows.Forms.TextBox()
         Me.BoxAlbum = New System.Windows.Forms.TextBox()
         Me.BoxLenght = New System.Windows.Forms.TextBox()
+        Me.ListHistory = New System.Windows.Forms.ListBox()
         Me.SuspendLayout()
         '
         'Label1
@@ -70,7 +71,7 @@ Partial Class SongForm
         '
         'BottonHistory
         '
-        Me.BottonHistory.Location = New System.Drawing.Point(427, 262)
+        Me.BottonHistory.Location = New System.Drawing.Point(523, 252)
         Me.BottonHistory.Name = "BottonHistory"
         Me.BottonHistory.Size = New System.Drawing.Size(147, 37)
         Me.BottonHistory.TabIndex = 7
@@ -98,11 +99,21 @@ Partial Class SongForm
         Me.BoxLenght.Size = New System.Drawing.Size(171, 26)
         Me.BoxLenght.TabIndex = 10
         '
+        'ListHistory
+        '
+        Me.ListHistory.FormattingEnabled = True
+        Me.ListHistory.ItemHeight = 20
+        Me.ListHistory.Location = New System.Drawing.Point(382, 55)
+        Me.ListHistory.Name = "ListHistory"
+        Me.ListHistory.Size = New System.Drawing.Size(376, 144)
+        Me.ListHistory.TabIndex = 11
+        '
         'SongForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.ListHistory)
         Me.Controls.Add(Me.BoxLenght)
         Me.Controls.Add(Me.BoxAlbum)
         Me.Controls.Add(Me.BoxName)
@@ -126,4 +137,5 @@ Partial Class SongForm
     Friend WithEvents BoxName As TextBox
     Friend WithEvents BoxAlbum As TextBox
     Friend WithEvents BoxLenght As TextBox
+    Friend WithEvents ListHistory As ListBox
 End Class

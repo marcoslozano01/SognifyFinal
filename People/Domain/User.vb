@@ -9,6 +9,7 @@
 
     Public ReadOnly Property UserDAO As UserDAO
 
+
     Public Sub New()
         Me.UserDAO = New UserDAO
 
@@ -25,4 +26,10 @@
     Public Sub ReadUser()
         Me.UserDAO.Read(Me)
     End Sub
+
+    Public Function DeleteUser() As Integer
+        Me.UserDAO.Delete(Me)
+    End Function
+
+
 End Class

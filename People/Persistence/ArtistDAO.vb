@@ -23,7 +23,7 @@
 
     Public Sub ReadArtist(ByRef a As Artist)
         Dim col As Collection : Dim aux As Collection
-        col = DBBroker.GetBroker.Read("SELECT * FROM ARTISTS WHERE idArtist='" & a.idArtist & "';")
+        col = DBBroker.GetBroker.Read("SELECT * FROM ARTISTS WHERE idArtist=" & a.idArtist & ";")
         For Each aux In col
             a.aName = aux(2).ToString
             a.country = aux(3).ToString
@@ -64,5 +64,23 @@
             Me.Artists.Add(a)
         Next
     End Sub
+
+    Public Sub ReadByName(ByRef a As Artist)
+        Dim col As Collection : Dim aux As Collection
+        col = DBBroker.GetBroker.Read("SELECT * FROM ARTISTS WHERE aName='" & a.aName & "';")
+        For Each aux In col
+            a.idArtist = CType(aux(1).ToString, Integer)
+            a.country = aux(3).ToString
+            a.image = aux(4).ToString
+        Next
+    End Sub
+
+    Public Function Insert(ByVal a As Artist) As Integer
+        Return DBBroker.GetBroker.Change("INSERT INTO [ARTISTS] ([aName],[country],[image]) VALUES ('" & a.aName & "','" & a.country & "','" & a.image & "');")
+    End Function
+
+    Public Function Delete(ByVal f As Artist) As Integer
+        Return DBBroker.GetBroker.Change("DELETE FROM FAV_ARTISTS WHERE artist='" & f.idArtist & "';")
+    End Function
 
 End Class

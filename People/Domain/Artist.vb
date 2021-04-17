@@ -42,6 +42,16 @@
     Public Sub ReadSearcher(chain As String)
         Me.ArtistDAO.ReadSearcher(chain)
     End Sub
+    Public Sub ReadArtistByName()
+        Me.ArtistDAO.ReadByName(Me)
+    End Sub
 
+    Public Function InsertArtist() As Integer
+        Return Me.ArtistDAO.Insert(Me)
+    End Function
+
+    Public Function deleteFavArtist() As Integer
+        Return Me.ArtistDAO.DeleteFav(Me)
+    End Function
 
 End Class

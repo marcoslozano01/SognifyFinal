@@ -27,8 +27,34 @@
         Dim playBack As PlayBack = New PlayBack
         playBack.user = user
         playBack.song = song
-        MessageBox.Show(DateTime.Now.ToString("dd/MM/yyyy"))
         playBack.plDate = DateTime.Now.ToString("dd/MM/yyyy")
-        playBack.InsertPlayBack()
+        Try
+            If playBack.InsertPlayBack() <> 1 Then
+                MessageBox.Show("The id already exists")
+                Exit Sub
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub BottonHistory_Click(sender As Object, e As EventArgs) Handles BottonHistory.Click
+
+        Dim p As PlayBack = New PlayBack(1)
+        Dim playback As PlayBack
+        Try
+            p.ReadHistory(song)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+
+        ListHistory.Items.Clear()
+        For Each playBack In p.PlayBackDAO.PlayBacks
+            ListHistory.Items.Add(playback.user.Email & " " & playback.plDate)
+        Next
+
+
+
+
     End Sub
 End Class

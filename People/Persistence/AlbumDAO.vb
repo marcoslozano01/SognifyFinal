@@ -30,7 +30,16 @@
             a.cover = aux(5).ToString
         Next
     End Sub
-
+    Public Sub ReadByName(ByRef al As Album)
+        Dim col As Collection : Dim aux As Collection
+        col = DBBroker.GetBroker.Read("SELECT * FROM ALBUMS WHERE aName='" & al.aName & "';")
+        For Each aux In col
+            al.idAlbum = CType(aux(1).ToString, Integer)
+            al.releaseDate = aux(3).ToString
+            al.artist = New Artist(CType(aux(4).ToString, Integer))
+            al.cover = aux(5).ToString
+        Next
+    End Sub
     Public Sub ReadSearcher(search As String)
         Dim a As Album
         Dim chain As String = search + "%"
@@ -45,5 +54,9 @@
             Me.Albums.Add(a)
         Next
     End Sub
+
+    Public Function Insert(ByVal al As Album) As Integer
+        Return DBBroker.GetBroker.Change("INSERT INTO [ALBUMS] ([aName],[releaseDate],[artist],[cover]) VALUES ('" & al.aName & "',#" & al.releaseDate & "#," & al.artist.idArtist & ",'" & al.cover & "');")
+    End Function
 
 End Class

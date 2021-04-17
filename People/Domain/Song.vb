@@ -35,4 +35,8 @@
         Me.SongDAO.ReadSearcher(chain)
     End Sub
 
+    Public Function InsertSong() As Integer
+        Return Me.SongDAO.Insert(Me)
+    End Function
+
 End Class

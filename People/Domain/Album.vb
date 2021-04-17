@@ -1,13 +1,13 @@
 ﻿Public Class Album
     Public Property idAlbum As Integer
 
-    Public Property aName As String
+    Public Property aName As String = ""
 
-    Public Property releaseDate As String
+    Public Property releaseDate As String = ""
 
     Public Property artist As Artist
 
-    Public Property cover As String
+    Public Property cover As String = ""
 
     Public ReadOnly Property AlbumDAO As AlbumDAO
 
@@ -23,6 +23,10 @@
         Me.AlbumDAO.ReadAll(path)
     End Sub
 
+    Public Sub ReadAlbumByName()
+        Me.AlbumDAO.ReadByName(Me)
+    End Sub
+
     Public Sub ReadAlbum()
         Me.AlbumDAO.Read(Me)
     End Sub
@@ -30,4 +34,8 @@
     Public Sub ReadSearcher(chain As String)
         Me.AlbumDAO.ReadSearcher(chain)
     End Sub
+
+    Public Function InsertAlbum() As Integer
+        Return Me.AlbumDAO.Insert(Me)
+    End Function
 End Class
