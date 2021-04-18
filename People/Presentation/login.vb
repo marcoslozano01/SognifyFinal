@@ -292,7 +292,6 @@
                 MessageBox.Show("This artist already exist")
                 Exit Function
             End If
-            ListBox.Items.Add(a.aName)
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
@@ -300,7 +299,7 @@
         Return a.idArtist
     End Function
 
-    Private Sub insertAlbum(aName As String)
+    Private Function insertAlbum(aName As String) As Integer
         Me.al = New Album()
         Dim artist = New Artist
         al.aName = albumBox.Text
@@ -316,14 +315,43 @@
             Try
                 If al.InsertAlbum <> 1 Then
                     MessageBox.Show("This artist already exist")
-                    Exit Sub
+                    Exit Function
                 End If
-                ListBox.Items.Add(al.aName)
             Catch ex As Exception
                 MessageBox.Show(ex.Message)
             End Try
         End If
-    End Sub
+        al.ReadAlbumByName()
+        Return al.idAlbum
+    End Function
+
+    Private Function insertSong(aName As String) As Integer
+        Me.s = New Song()
+        Dim album = New Album
+        s.sName = nameBox.Text
+        s.length = CType(lengthBox.Text, Integer)
+        album.aName = albumBox.Text
+        album.ReadAlbumByName()
+        If album.idAlbum = 0 And relaseDateBox.Enabled = False Then
+            MessageBox.Show("This album doesnt exists")
+            initAlbumBox()
+        Else
+            s.album = New Album(insertAlbum(albumBox.Text))
+            MessageBox.Show(CType(s.album.idAlbum, String))
+            If s.album.idAlbum <> 0 Then
+                Try
+                    If s.InsertSong <> 1 Then
+                        MessageBox.Show("This artist already exist")
+                        Exit Function
+                    End If
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message)
+                End Try
+            End If
+        End If
+        s.ReadSongByName()
+        Return s.idSong
+    End Function
 
 
 
@@ -346,18 +374,41 @@
     Private Sub insertBtt_Click(sender As Object, e As EventArgs) Handles insertBtt.Click
         Select Case ComboBox.SelectedIndex
             Case 0
-                'insertSong()
-                readallSongs()
+                Dim idSong As Integer = insertSong(nameBox.Text)
+                If idSong <> 0 Then
+                    Me.s = New Song(idSong)
+                    s.ReadSong()
+                    ListBox.Items.Add(s.sName)
+                    clearBoxes()
+                    resetLabels()
+                    initSongBox()
+                End If
             Case 1
-                insertAlbum(albumBox.Text)
-                clearBoxes()
+                Dim idAlbum As Integer = insertAlbum(albumBox.Text)
+                If idAlbum <> 0 Then
+                    Me.al = New Album(idAlbum)
+                    al.ReadAlbum()
+                    ListBox.Items.Add(al.aName)
+                    clearBoxes()
+                    resetLabels()
+                    initAlbumBox()
+                End If
 
             Case 2
-                insertArtist(artistBox.Text)
-                clearBoxes()
+                Dim idArtist As Integer = insertArtist(artistBox.Text)
+                If idArtist <> 0 Then
+                    Me.a = New Artist(idArtist)
+                    a.ReadArtist()
+                    ListBox.Items.Add(a.aName)
+                    clearBoxes()
+                    resetLabels()
+                    initArtistBox()
+                End If
             Case 3
                 insertUser(emailBox.Text)
                 clearBoxes()
+                resetLabels()
+                initUserBox()
         End Select
 
 
