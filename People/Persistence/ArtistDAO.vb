@@ -103,7 +103,7 @@
     End Function
 
     Public Function Update(ByVal a As Artist) As Integer
-        Return DBBroker.GetBroker.Change("UPDATE ARTISTS SET aName='" & a.aName & "', country='" & a.country & "', image='" & a.image & "' WHERE IdArtist=" & a.idArtist & ";")
+        Return DBBroker.GetBroker.Change("UPDATE [ARTISTS] SET [aName]='" & a.aName & "', [country]='" & a.country & "', [image]='" & a.image & "' WHERE [idArtist]=" & a.idArtist & ";")
     End Function
 
 End Class

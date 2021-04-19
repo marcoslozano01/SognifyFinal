@@ -21,7 +21,6 @@
     Public Sub checkFavArtist()
         artist.user = Me.user
         artist.artist = Me.artist
-        MessageBox.Show(artist.artist.aName)
         Try
             If artist.ReadFavArtist() = 0 Then
                 favArtistBox.Checked = False

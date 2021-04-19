@@ -417,6 +417,8 @@
         a.image = "a"
         artist.ReadArtistByName()
         a.idArtist = artist.idArtist
+        MessageBox.Show(CType(a.idArtist, String))
+
         Try
             a.updateArtist()
         Catch ex As Exception
