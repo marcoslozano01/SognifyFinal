@@ -11,7 +11,6 @@
         song.album.ReadAlbum()
         BoxAlbum.Text = song.album.aName
         songLength(song.length)
-        MessageBox.Show(user.Email)
     End Sub
     Private Sub songLength(segundos As Integer)
         Dim hor As Integer

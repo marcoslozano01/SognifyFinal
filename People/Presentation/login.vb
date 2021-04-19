@@ -22,7 +22,7 @@
 
     Private Sub loginBtt_Click(sender As Object, e As EventArgs) Handles loginBtt.Click
         Dim u As User = New User
-        Dim usr As User
+        Dim usr As User = New User
         u.ReadAllUsers(filePath)
         Dim check As Boolean
         Try

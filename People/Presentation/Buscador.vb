@@ -43,14 +43,19 @@
     End Sub
 
     Private Sub ListSongs_DoubleClick(sender As Object, e As EventArgs) Handles ListSongs.DoubleClick
-        Dim song As Song = New Song(ListSongs.SelectedItem.ToString)
+        Dim song As Song = New Song()
+        song.sName = ListSongs.SelectedItem.ToString
         song.ReadSongByName()
         Dim f As Form = New SongForm(song, user)
         f.Show()
     End Sub
 
     Private Sub ListArtists_DoubleClick(sender As Object, e As EventArgs) Handles ListArtists.DoubleClick
-
+        Dim artist As Artist = New Artist()
+        artist.aName = ListArtists.SelectedItem.ToString
+        artist.ReadArtistByName()
+        Dim f As Form = New ArtistForm(artist, user)
+        f.Show()
     End Sub
 
     Private Sub Buscador_Load(sender As Object, e As EventArgs) Handles MyBase.Load
