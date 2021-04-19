@@ -23,9 +23,9 @@
     Private Sub loginBtt_Click(sender As Object, e As EventArgs) Handles loginBtt.Click
         Dim u As User = New User
         Dim usr As User = New User
-        u.ReadAllUsers(filePath)
         Dim check As Boolean
         Try
+            u.ReadAllUsers(filePath)
             For Each user In u.UserDAO.Users
                 If user.Email = TextBoxEmail.Text Then
                     check = True
@@ -39,7 +39,7 @@
         If check = True Then
             Me.Hide()
             usr.ReadUser()
-            Dim b As Buscador = New Buscador(usr)
+            Dim b As Buscador = New Buscador(usr, filePath)
             b.Show()
         Else
             MessageBox.Show("Login incorrect")

@@ -52,8 +52,5 @@
             ListHistory.Items.Add(playback.user.Email & " " & playback.plDate)
         Next
 
-
-
-
     End Sub
 End Class

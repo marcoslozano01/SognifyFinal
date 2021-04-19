@@ -3,10 +3,12 @@
     Dim artist As Artist
     Dim album As Album
     Public Property user As User
+    Public Property filePath As String
 
-    Public Sub New(ByRef user As User)
+    Public Sub New(ByRef user As User, ByRef filePath As String)
         InitializeComponent()
         Me.user = user
+        Me.filePath = filePath
     End Sub
     Private Sub BuscadorTextBox_TextChanged(sender As Object, e As EventArgs) Handles BuscadorTextBox.TextChanged
 
@@ -54,7 +56,7 @@
         Dim artist As Artist = New Artist()
         artist.aName = ListArtists.SelectedItem.ToString
         artist.ReadArtistByName()
-        Dim f As Form = New ArtistForm(artist, user)
+        Dim f As Form = New ArtistForm(artist, user, filePath)
         f.Show()
     End Sub
 

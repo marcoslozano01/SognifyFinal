@@ -43,13 +43,16 @@
         Next
     End Sub
 
-    Public Sub ReadFavArtist(ByRef a As Artist)
+    Public Function ReadFavArtist(ByRef a As Artist) As Integer
+        Dim check As Integer = 0
         Dim col As Collection : Dim aux As Collection
-        col = DBBroker.GetBroker.Read("SELECT * FROM FAV_ARTISTS WHERE user='" & a.user.Email & "' AND  artist='" & a.artist.idArtist & "';")
+        col = DBBroker.GetBroker.Read("SELECT * FROM FAV_ARTISTS WHERE user='" & a.user.Email & "' AND  artist=" & a.artist.idArtist & ";")
         For Each aux In col
+            check = 1
             a.favDate = aux(3).ToString
         Next
-    End Sub
+        Return check
+    End Function
 
     Public Sub ReadSearcher(search As String)
         Dim a As Artist
@@ -75,6 +78,10 @@
         Next
     End Sub
 
+
+    Public Function InsertFav(ByVal a As Artist) As Integer
+        Return DBBroker.GetBroker.Change("INSERT INTO [FAV_ARTISTS] ([user],[artist],[favDate]) VALUES ('" & a.user.Email & "'," & a.artist.idArtist & ",#" & a.favDate & "#);")
+    End Function
     Public Function Insert(ByVal a As Artist) As Integer
         Return DBBroker.GetBroker.Change("INSERT INTO [ARTISTS] ([aName],[country],[image]) VALUES ('" & a.aName & "','" & a.country & "','" & a.image & "');")
     End Function
@@ -82,6 +89,11 @@
     Public Function Delete(ByVal a As Artist) As Integer
         Return DBBroker.GetBroker.Change("DELETE FROM ARTISTS WHERE IdArtist=" & a.idArtist & ";")
     End Function
+
+    Public Function DeleteFav(ByVal a As Artist) As Integer
+        Return DBBroker.GetBroker.Change("DELETE FROM [FAV_ARTISTS] WHERE user='" & a.user.Email & "' AND artist=" & a.artist.idArtist & ";")
+    End Function
+
     Public Function DeleteFavByUser(ByVal f As Artist) As Integer
         Return DBBroker.GetBroker.Change("DELETE FROM FAV_ARTISTS WHERE user='" & f.user.Email & "';")
     End Function

@@ -20,6 +20,20 @@
         Next
     End Sub
 
+    Public Sub ReadAllByArtist(path As String, ByRef al As Album)
+        Dim a As Album
+        Dim col, aux As Collection
+        col = DBBroker.GetBroker(path).Read("SELECT * FROM ALBUMS WHERE artist=" & al.artist.idArtist & ";")
+        For Each aux In col
+            a = New Album(CType(aux(1).ToString, Integer))
+            a.aName = aux(2).ToString
+            a.releaseDate = aux(3).ToString
+            a.artist = New Artist(CType(aux(4).ToString, Integer))
+            a.cover = aux(5).ToString
+            Me.Albums.Add(a)
+        Next
+    End Sub
+
     Public Sub Read(ByRef a As Album)
         Dim col As Collection : Dim aux As Collection
         col = DBBroker.GetBroker.Read("SELECT * FROM ALBUMS WHERE idAlbum=" & a.idAlbum & ";")

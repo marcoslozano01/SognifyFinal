@@ -23,6 +23,10 @@
         Me.AlbumDAO.ReadAll(path)
     End Sub
 
+    Public Sub ReadAllAlbumsByArtist(path As String)
+        Me.AlbumDAO.ReadAllByArtist(path, Me)
+    End Sub
+
     Public Sub ReadAlbumByName()
         Me.AlbumDAO.ReadByName(Me)
     End Sub
@@ -49,5 +53,6 @@
     Public Function updateAlbum() As Integer
         Return Me.AlbumDAO.update(Me)
     End Function
+
 
 End Class
