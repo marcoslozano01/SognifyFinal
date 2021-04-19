@@ -40,9 +40,7 @@
 
     End Sub
 
-    Private Sub ListAlbums_DoubleClick(sender As Object, e As EventArgs) Handles ListAlbums.DoubleClick
 
-    End Sub
 
     Private Sub ListSongs_DoubleClick(sender As Object, e As EventArgs) Handles ListSongs.DoubleClick
         Dim song As Song = New Song()
@@ -60,7 +58,11 @@
         f.Show()
     End Sub
 
-    Private Sub Buscador_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+    Private Sub ListAlbums_DoubleClick(sender As Object, e As EventArgs) Handles ListAlbums.DoubleClick
+        Dim album As Album = New Album()
+        album.aName = ListAlbums.SelectedItem.ToString
+        album.ReadAlbumByName()
+        Dim f As Form = New AlbumForm(album, user, filePath)
+        f.Show()
     End Sub
 End Class

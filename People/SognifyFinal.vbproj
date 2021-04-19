@@ -103,6 +103,12 @@
     <Compile Include="Persistence\PlayBackDAO.vb" />
     <Compile Include="Persistence\SongDAO.vb" />
     <Compile Include="Persistence\UserDAO.vb" />
+    <Compile Include="Presentation\AlbumForm.Designer.vb">
+      <DependentUpon>AlbumForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\AlbumForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Presentation\Buscador.Designer.vb">
       <DependentUpon>Buscador.vb</DependentUpon>
     </Compile>
@@ -134,6 +140,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\AlbumForm.resx">
+      <DependentUpon>AlbumForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\ArtistForm.resx">
       <DependentUpon>ArtistForm.vb</DependentUpon>

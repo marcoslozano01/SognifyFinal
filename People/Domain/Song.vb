@@ -50,4 +50,8 @@
     Public Function UpdateSong() As Integer
         Return Me.SongDAO.update(Me)
     End Function
+
+    Public Sub ReadAllSongsByAlbum(a As Album, path As String)
+        Me.SongDAO.ReadAllByAlbum(a, path)
+    End Sub
 End Class

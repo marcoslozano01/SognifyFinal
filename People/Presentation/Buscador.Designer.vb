@@ -34,79 +34,84 @@ Partial Class Buscador
         '
         'BuscadorTextBox
         '
-        Me.BuscadorTextBox.Location = New System.Drawing.Point(298, 49)
+        Me.BuscadorTextBox.Location = New System.Drawing.Point(199, 32)
+        Me.BuscadorTextBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.BuscadorTextBox.Name = "BuscadorTextBox"
-        Me.BuscadorTextBox.Size = New System.Drawing.Size(200, 26)
+        Me.BuscadorTextBox.Size = New System.Drawing.Size(135, 20)
         Me.BuscadorTextBox.TabIndex = 0
         '
         'textBuscador
         '
         Me.textBuscador.AutoSize = True
-        Me.textBuscador.Location = New System.Drawing.Point(298, 13)
+        Me.textBuscador.Location = New System.Drawing.Point(199, 8)
+        Me.textBuscador.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.textBuscador.Name = "textBuscador"
-        Me.textBuscador.Size = New System.Drawing.Size(77, 20)
+        Me.textBuscador.Size = New System.Drawing.Size(59, 15)
         Me.textBuscador.TabIndex = 1
         Me.textBuscador.Text = "Buscador"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(84, 119)
+        Me.Label1.Location = New System.Drawing.Point(56, 77)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(54, 20)
+        Me.Label1.Size = New System.Drawing.Size(39, 15)
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "Artists"
         '
         'ListArtists
         '
         Me.ListArtists.FormattingEnabled = True
-        Me.ListArtists.ItemHeight = 20
-        Me.ListArtists.Location = New System.Drawing.Point(38, 161)
+        Me.ListArtists.Location = New System.Drawing.Point(25, 105)
+        Me.ListArtists.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.ListArtists.Name = "ListArtists"
-        Me.ListArtists.Size = New System.Drawing.Size(186, 104)
+        Me.ListArtists.Size = New System.Drawing.Size(125, 69)
         Me.ListArtists.TabIndex = 3
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(362, 119)
+        Me.Label2.Location = New System.Drawing.Point(241, 77)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(55, 20)
+        Me.Label2.Size = New System.Drawing.Size(42, 15)
         Me.Label2.TabIndex = 4
         Me.Label2.Text = "Songs"
         '
         'ListSongs
         '
         Me.ListSongs.FormattingEnabled = True
-        Me.ListSongs.ItemHeight = 20
-        Me.ListSongs.Location = New System.Drawing.Point(302, 161)
+        Me.ListSongs.Location = New System.Drawing.Point(201, 105)
+        Me.ListSongs.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.ListSongs.Name = "ListSongs"
-        Me.ListSongs.Size = New System.Drawing.Size(186, 104)
+        Me.ListSongs.Size = New System.Drawing.Size(125, 69)
         Me.ListSongs.TabIndex = 5
         '
         'ListAlbums
         '
         Me.ListAlbums.FormattingEnabled = True
-        Me.ListAlbums.ItemHeight = 20
-        Me.ListAlbums.Location = New System.Drawing.Point(565, 161)
+        Me.ListAlbums.Location = New System.Drawing.Point(377, 105)
+        Me.ListAlbums.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.ListAlbums.Name = "ListAlbums"
-        Me.ListAlbums.Size = New System.Drawing.Size(186, 104)
+        Me.ListAlbums.Size = New System.Drawing.Size(125, 69)
         Me.ListAlbums.TabIndex = 6
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(616, 119)
+        Me.Label3.Location = New System.Drawing.Point(411, 77)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(62, 20)
+        Me.Label3.Size = New System.Drawing.Size(48, 15)
         Me.Label3.TabIndex = 7
         Me.Label3.Text = "Albums"
         '
         'Buscador
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(533, 292)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.ListAlbums)
         Me.Controls.Add(Me.ListSongs)
@@ -115,6 +120,7 @@ Partial Class Buscador
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.textBuscador)
         Me.Controls.Add(Me.BuscadorTextBox)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "Buscador"
         Me.Text = "Buscador"
         Me.ResumeLayout(False)
