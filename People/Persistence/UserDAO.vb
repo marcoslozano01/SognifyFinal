@@ -37,4 +37,8 @@
     Public Function Insert(ByVal u As User) As Integer
         Return DBBroker.GetBroker.Change("INSERT INTO [USERS]  VALUES ('" & u.Email & "','" & u.uName & "','" & u.uSurname & "',#" & u.birthdate & "#);")
     End Function
+
+    Public Function Update(ByVal u As User) As Integer
+        Return DBBroker.GetBroker.Change("UPDATE USERS SET uName='" & u.uName & "', uSurname='" & u.uSurname & "', birthdate='" & u.birthdate & "' WHERE Email='" & u.Email & "';")
+    End Function
 End Class

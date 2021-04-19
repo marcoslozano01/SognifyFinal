@@ -67,6 +67,8 @@
 
     End Function
 
-
+    Public Function Update(ByVal s As Song) As Integer
+        Return DBBroker.GetBroker.Change("UPDATE SONGS SET sName='" & s.sName & "', length=" & s.length & " WHERE idSong=" & s.idSong & ";")
+    End Function
 
 End Class

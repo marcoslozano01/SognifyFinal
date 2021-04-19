@@ -46,5 +46,8 @@
     Public Function DeleteAlbum() As Integer
         Return Me.AlbumDAO.Delete(Me)
     End Function
+    Public Function updateAlbum() As Integer
+        Return Me.AlbumDAO.update(Me)
+    End Function
 
 End Class

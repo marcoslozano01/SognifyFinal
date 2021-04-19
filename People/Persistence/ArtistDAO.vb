@@ -90,5 +90,8 @@
         Return DBBroker.GetBroker.Change("DELETE FROM FAV_ARTISTS WHERE artist=" & f.artist.idArtist & ";")
     End Function
 
+    Public Function Update(ByVal a As Artist) As Integer
+        Return DBBroker.GetBroker.Change("UPDATE ARTISTS SET aName='" & a.aName & "', country='" & a.country & "', image='" & a.image & "' WHERE IdArtist=" & a.idArtist & ";")
+    End Function
 
 End Class

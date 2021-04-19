@@ -61,5 +61,9 @@
     Public Function deletefavArtistByArtist() As Integer
         Return Me.ArtistDAO.DeleteFavByArtist(Me)
     End Function
+    Public Function updateArtist() As Integer
+        Return Me.ArtistDAO.update(Me)
+    End Function
+
 
 End Class

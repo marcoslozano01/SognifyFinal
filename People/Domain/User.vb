@@ -34,6 +34,9 @@
     Public Function insertUser() As Integer
         Return Me.UserDAO.Insert(Me)
     End Function
+    Public Function updateUser() As Integer
+        Return Me.UserDAO.update(Me)
+    End Function
 
 
 End Class

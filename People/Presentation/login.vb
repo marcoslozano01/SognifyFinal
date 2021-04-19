@@ -117,12 +117,15 @@
             Select Case ComboBox.SelectedIndex
                 Case 0
                     readSong()
+                    albumBox.Enabled = False
                 Case 1
                     readAlbum()
+                    artistBox.Enabled = False
                 Case 2
                     readArtist()
                 Case 3
                     readuser()
+                    emailBox.Enabled = False
             End Select
         End If
     End Sub
@@ -353,7 +356,96 @@
         Return s.idSong
     End Function
 
+    Private Sub updateSong(sName As String)
+        Me.s = New Song()
+        Dim song As Song = New Song
+        song.sName = sName
+        s.sName = nameBox.Text
+        s.length = CType(lengthBox.Text, Integer)
+        song.ReadSongByName()
+        s.idSong = song.idSong
+        Try
+            s.UpdateSong()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        clearBoxes()
+        ListBox.Items.Clear()
+        readallSongs()
+    End Sub
 
+    Private Sub updateAlbum(aName As String)
+        Me.al = New Album()
+        Dim album As Album = New Album
+        album.aName = aName
+        al.aName = albumBox.Text
+        al.releaseDate = relaseDateBox.Text
+        al.cover = coverBox.Text
+        album.ReadAlbumByName()
+        al.idAlbum = album.idAlbum
+        Try
+            al.updateAlbum()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        clearBoxes()
+        ListBox.Items.Clear()
+        readallAlbums()
+    End Sub
+
+    Private Sub updateUser(email As String)
+        Me.user = New User(email)
+        user.uName = nameBox.Text
+        user.uSurname = surnameBox.Text
+        user.birthdate = birthDateBox.Text
+        Try
+            user.updateUser()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        clearBoxes()
+        ListBox.Items.Clear()
+        readallUsers()
+    End Sub
+
+    Private Sub updateArtist(aName As String)
+        Me.a = New Artist()
+        Dim artist As Artist = New Artist
+        artist.aName = aName
+        a.aName = artistBox.Text
+        a.country = countryBox.Text
+        a.image = "a"
+        artist.ReadArtistByName()
+        a.idArtist = artist.idArtist
+        Try
+            a.updateArtist()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        clearBoxes()
+        ListBox.Items.Clear()
+        readallArtist()
+    End Sub
+
+    Private Sub updateBtt_Click(sender As Object, e As EventArgs) Handles updateBtt.Click
+        If ListBox.SelectedIndex >= 0 Then
+            Select Case ComboBox.SelectedIndex
+                Case 0
+                    updateSong(ListBox.SelectedItem.ToString)
+                    clearBoxes()
+                Case 1
+                    updateAlbum(ListBox.SelectedItem.ToString)
+                    clearBoxes()
+
+                Case 2
+                    updateArtist(ListBox.SelectedItem.ToString)
+                    clearBoxes()
+                Case 3
+                    updateUser(emailBox.Text)
+                    clearBoxes()
+            End Select
+        End If
+    End Sub
 
     Private Sub deleteBtt_Click(sender As Object, e As EventArgs) Handles deleteBtt.Click
         Select Case ComboBox.SelectedIndex
@@ -510,6 +602,9 @@
         insertBtt.Enabled = True
         updateBtt.Enabled = False
         deleteBtt.Enabled = False
+        artistBox.Enabled = True
+        albumBox.Enabled = True
+        emailBox.Enabled = True
 
     End Sub
 

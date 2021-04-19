@@ -66,4 +66,9 @@
     Public Function Delete(ByVal al As Album) As Integer
         Return DBBroker.GetBroker.Change("DELETE FROM ALBUMS WHERE IdAlbum=" & al.idAlbum & ";")
     End Function
+
+    Public Function Update(ByVal a As Album) As Integer
+        Return DBBroker.GetBroker.Change("UPDATE ALBUMS SET aName='" & a.aName & "', releaseDate='" & a.releaseDate & "', cover='" & a.cover & "' WHERE idAlbum=" & a.idAlbum & ";")
+    End Function
+
 End Class

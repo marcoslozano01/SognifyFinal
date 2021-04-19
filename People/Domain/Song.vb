@@ -47,4 +47,7 @@
         Return Me.SongDAO.Delete(Me)
     End Function
 
+    Public Function UpdateSong() As Integer
+        Return Me.SongDAO.update(Me)
+    End Function
 End Class
