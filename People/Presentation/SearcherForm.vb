@@ -1,4 +1,4 @@
-﻿Public Class Buscador
+﻿Public Class SearcherForm
     Dim song As Song
     Dim artist As Artist
     Dim album As Album
@@ -10,7 +10,7 @@
         Me.user = user
         Me.filePath = filePath
     End Sub
-    Private Sub BuscadorTextBox_TextChanged(sender As Object, e As EventArgs) Handles BuscadorTextBox.TextChanged
+    Private Sub BuscadorTextBox_TextChanged(sender As Object, e As EventArgs) Handles SearcherTextBox.TextChanged
 
         Dim s As Song = New Song
         Dim a As Artist = New Artist
@@ -18,11 +18,11 @@
         ListSongs.Items.Clear()
         ListArtists.Items.Clear()
         ListAlbums.Items.Clear()
-        If BuscadorTextBox.Text <> "" Then
+        If SearcherTextBox.Text <> "" Then
             Try
-                s.ReadSearcher(BuscadorTextBox.Text)
-                a.ReadSearcher(BuscadorTextBox.Text)
-                al.ReadSearcher(BuscadorTextBox.Text)
+                s.ReadSearcher(SearcherTextBox.Text)
+                a.ReadSearcher(SearcherTextBox.Text)
+                al.ReadSearcher(SearcherTextBox.Text)
             Catch ex As Exception
                 MessageBox.Show(ex.Message)
             End Try
@@ -64,5 +64,10 @@
         album.ReadAlbumByName()
         Dim f As Form = New AlbumForm(album, user, filePath)
         f.Show()
+    End Sub
+
+    Private Sub backButton_Click(sender As Object, e As EventArgs) Handles backButton.Click
+        loginForm.Show()
+        Hide()
     End Sub
 End Class

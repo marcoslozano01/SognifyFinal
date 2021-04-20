@@ -29,55 +29,62 @@ Partial Class ArtistForm
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.favArtistBox = New System.Windows.Forms.CheckBox()
         Me.albumList = New System.Windows.Forms.ListBox()
+        Me.backButton = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'nameBox
         '
-        Me.nameBox.Location = New System.Drawing.Point(125, 73)
+        Me.nameBox.Location = New System.Drawing.Point(83, 47)
+        Me.nameBox.Margin = New System.Windows.Forms.Padding(2)
         Me.nameBox.Name = "nameBox"
-        Me.nameBox.Size = New System.Drawing.Size(176, 26)
+        Me.nameBox.Size = New System.Drawing.Size(119, 20)
         Me.nameBox.TabIndex = 0
         '
         'nameLb
         '
         Me.nameLb.AutoSize = True
-        Me.nameLb.Location = New System.Drawing.Point(32, 79)
+        Me.nameLb.Location = New System.Drawing.Point(21, 51)
+        Me.nameLb.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.nameLb.Name = "nameLb"
-        Me.nameLb.Size = New System.Drawing.Size(77, 30)
+        Me.nameLb.Size = New System.Drawing.Size(35, 13)
         Me.nameLb.TabIndex = 1
         Me.nameLb.Text = "Name"
         '
         'countryLb
         '
         Me.countryLb.AutoSize = True
-        Me.countryLb.Location = New System.Drawing.Point(32, 139)
+        Me.countryLb.Location = New System.Drawing.Point(21, 90)
+        Me.countryLb.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.countryLb.Name = "countryLb"
-        Me.countryLb.Size = New System.Drawing.Size(96, 30)
+        Me.countryLb.Size = New System.Drawing.Size(43, 13)
         Me.countryLb.TabIndex = 3
         Me.countryLb.Text = "Country"
         '
         'countryBox
         '
-        Me.countryBox.Location = New System.Drawing.Point(125, 133)
+        Me.countryBox.Location = New System.Drawing.Point(83, 86)
+        Me.countryBox.Margin = New System.Windows.Forms.Padding(2)
         Me.countryBox.Name = "countryBox"
-        Me.countryBox.Size = New System.Drawing.Size(176, 26)
+        Me.countryBox.Size = New System.Drawing.Size(119, 20)
         Me.countryBox.TabIndex = 2
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(470, 41)
+        Me.PictureBox1.Location = New System.Drawing.Point(313, 27)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(225, 184)
+        Me.PictureBox1.Size = New System.Drawing.Size(150, 120)
         Me.PictureBox1.TabIndex = 4
         Me.PictureBox1.TabStop = False
         '
         'favArtistBox
         '
         Me.favArtistBox.AutoSize = True
-        Me.favArtistBox.Location = New System.Drawing.Point(36, 201)
+        Me.favArtistBox.Location = New System.Drawing.Point(24, 131)
+        Me.favArtistBox.Margin = New System.Windows.Forms.Padding(2)
         Me.favArtistBox.Name = "favArtistBox"
-        Me.favArtistBox.Size = New System.Drawing.Size(93, 24)
+        Me.favArtistBox.Size = New System.Drawing.Size(64, 17)
         Me.favArtistBox.TabIndex = 5
         Me.favArtistBox.Text = "favArtist"
         Me.favArtistBox.UseVisualStyleBackColor = True
@@ -85,17 +92,28 @@ Partial Class ArtistForm
         'albumList
         '
         Me.albumList.FormattingEnabled = True
-        Me.albumList.ItemHeight = 20
-        Me.albumList.Location = New System.Drawing.Point(36, 286)
+        Me.albumList.Location = New System.Drawing.Point(24, 186)
+        Me.albumList.Margin = New System.Windows.Forms.Padding(2)
         Me.albumList.Name = "albumList"
-        Me.albumList.Size = New System.Drawing.Size(220, 104)
+        Me.albumList.Size = New System.Drawing.Size(148, 69)
         Me.albumList.TabIndex = 6
+        '
+        'backButton
+        '
+        Me.backButton.Location = New System.Drawing.Point(21, 12)
+        Me.backButton.Name = "backButton"
+        Me.backButton.Size = New System.Drawing.Size(35, 22)
+        Me.backButton.TabIndex = 9
+        Me.backButton.Text = "<--"
+        Me.backButton.UseVisualStyleBackColor = True
         '
         'ArtistForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.BackColor = System.Drawing.Color.Lime
+        Me.ClientSize = New System.Drawing.Size(533, 292)
+        Me.Controls.Add(Me.backButton)
         Me.Controls.Add(Me.albumList)
         Me.Controls.Add(Me.favArtistBox)
         Me.Controls.Add(Me.PictureBox1)
@@ -103,8 +121,10 @@ Partial Class ArtistForm
         Me.Controls.Add(Me.countryBox)
         Me.Controls.Add(Me.nameLb)
         Me.Controls.Add(Me.nameBox)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "ArtistForm"
-        Me.Text = "Form1"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Songify"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -118,4 +138,5 @@ Partial Class ArtistForm
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents favArtistBox As CheckBox
     Friend WithEvents albumList As ListBox
+    Friend WithEvents backButton As Button
 End Class

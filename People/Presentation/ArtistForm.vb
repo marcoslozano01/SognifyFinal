@@ -13,9 +13,20 @@
     Private Sub ArtistForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         nameBox.Text = artist.aName
         countryBox.Text = artist.country
-        ' PictureBox1.Image = Image.FromFile(artist.image)
+        loadImage(artist.image)
         readAllAlbumsByArtist()
         checkFavArtist()
+    End Sub
+
+    Public Sub loadImage(url As String)
+        Try
+            PictureBox1.Image = Image.FromFile(url)
+            PictureBox1.SizeMode = PictureBoxSizeMode.CenterImage
+            PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
+        Catch e As Exception
+            PictureBox1.Enabled = False
+        End Try
+
     End Sub
 
     Public Sub checkFavArtist()
@@ -66,5 +77,9 @@
             End Try
 
         End If
+    End Sub
+
+    Private Sub backButton_Click(sender As Object, e As EventArgs) Handles backButton.Click
+        Hide()
     End Sub
 End Class

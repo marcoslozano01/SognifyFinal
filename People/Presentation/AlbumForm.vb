@@ -17,10 +17,21 @@
         Dim ar As Artist = album.artist
         nameTextbox.Text = album.aName
         releaseTextBox.Text = album.releaseDate
-        'PictureBox1.Image = Image.FromFile(album.cover)
+        loadCover(album.cover)
         ar.ReadArtist()
         artistBox.Text = ar.aName
         ReadAllSongsByAlbum()
+    End Sub
+
+    Public Sub loadCover(url As String)
+        Try
+            PictureBox1.Image = Image.FromFile(url)
+            PictureBox1.SizeMode = PictureBoxSizeMode.CenterImage
+            PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
+        Catch e As Exception
+            PictureBox1.Enabled = False
+        End Try
+
     End Sub
 
     Private Sub ReadAllSongsByAlbum()
@@ -35,5 +46,9 @@
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
+    End Sub
+
+    Private Sub backButton_Click(sender As Object, e As EventArgs) Handles backButton.Click
+        Hide()
     End Sub
 End Class

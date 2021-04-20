@@ -54,4 +54,8 @@
     Public Sub ReadAllSongsByAlbum(a As Album, path As String)
         Me.SongDAO.ReadAllByAlbum(a, path)
     End Sub
+
+    Public Function Overrides ToString() As String
+        Return Me.sName
+    End Function
 End Class

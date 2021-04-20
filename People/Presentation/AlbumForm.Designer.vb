@@ -30,6 +30,7 @@ Partial Class AlbumForm
         Me.artistLabel = New System.Windows.Forms.Label()
         Me.releaseDateLabel = New System.Windows.Forms.Label()
         Me.NameLabel = New System.Windows.Forms.Label()
+        Me.backButton = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -73,35 +74,46 @@ Partial Class AlbumForm
         'artistLabel
         '
         Me.artistLabel.AutoSize = True
-        Me.artistLabel.Location = New System.Drawing.Point(53, 151)
+        Me.artistLabel.Location = New System.Drawing.Point(90, 151)
         Me.artistLabel.Name = "artistLabel"
-        Me.artistLabel.Size = New System.Drawing.Size(33, 15)
+        Me.artistLabel.Size = New System.Drawing.Size(30, 13)
         Me.artistLabel.TabIndex = 10
         Me.artistLabel.Text = "Artist"
         '
         'releaseDateLabel
         '
         Me.releaseDateLabel.AutoSize = True
-        Me.releaseDateLabel.Location = New System.Drawing.Point(53, 92)
+        Me.releaseDateLabel.Location = New System.Drawing.Point(90, 92)
         Me.releaseDateLabel.Name = "releaseDateLabel"
-        Me.releaseDateLabel.Size = New System.Drawing.Size(82, 15)
+        Me.releaseDateLabel.Size = New System.Drawing.Size(72, 13)
         Me.releaseDateLabel.TabIndex = 9
         Me.releaseDateLabel.Text = "Release Date"
         '
         'NameLabel
         '
         Me.NameLabel.AutoSize = True
-        Me.NameLabel.Location = New System.Drawing.Point(53, 38)
+        Me.NameLabel.Location = New System.Drawing.Point(90, 38)
         Me.NameLabel.Name = "NameLabel"
-        Me.NameLabel.Size = New System.Drawing.Size(41, 15)
+        Me.NameLabel.Size = New System.Drawing.Size(35, 13)
         Me.NameLabel.TabIndex = 8
         Me.NameLabel.Text = "Name"
+        '
+        'backButton
+        '
+        Me.backButton.Location = New System.Drawing.Point(12, 12)
+        Me.backButton.Name = "backButton"
+        Me.backButton.Size = New System.Drawing.Size(35, 22)
+        Me.backButton.TabIndex = 16
+        Me.backButton.Text = "<--"
+        Me.backButton.UseVisualStyleBackColor = True
         '
         'AlbumForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(772, 404)
+        Me.BackColor = System.Drawing.Color.Lime
+        Me.ClientSize = New System.Drawing.Size(665, 386)
+        Me.Controls.Add(Me.backButton)
         Me.Controls.Add(Me.songsBox)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.artistBox)
@@ -110,8 +122,10 @@ Partial Class AlbumForm
         Me.Controls.Add(Me.artistLabel)
         Me.Controls.Add(Me.releaseDateLabel)
         Me.Controls.Add(Me.NameLabel)
+        Me.ForeColor = System.Drawing.SystemColors.ControlText
         Me.Name = "AlbumForm"
-        Me.Text = "AlbumForm"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Songify"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -126,4 +140,5 @@ Partial Class AlbumForm
     Friend WithEvents artistLabel As Label
     Friend WithEvents releaseDateLabel As Label
     Friend WithEvents NameLabel As Label
+    Friend WithEvents backButton As Button
 End Class

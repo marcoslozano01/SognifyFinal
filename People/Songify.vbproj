@@ -6,9 +6,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{4E486CE3-DC80-4B4F-916B-99EE4FC8C961}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>People.My.MyApplication</StartupObject>
-    <RootNamespace>People</RootNamespace>
-    <AssemblyName>People</AssemblyName>
+    <StartupObject>Songify.My.MyApplication</StartupObject>
+    <RootNamespace>Songify</RootNamespace>
+    <AssemblyName>Songify</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -21,7 +21,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>People.xml</DocumentationFile>
+    <DocumentationFile>Songify.xml</DocumentationFile>
     <NoWarn>
     </NoWarn>
     <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
@@ -33,7 +33,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>People.xml</DocumentationFile>
+    <DocumentationFile>Songify.xml</DocumentationFile>
     <NoWarn>
     </NoWarn>
     <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
@@ -109,10 +109,10 @@
     <Compile Include="Presentation\AlbumForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation\Buscador.Designer.vb">
-      <DependentUpon>Buscador.vb</DependentUpon>
+    <Compile Include="Presentation\SearcherForm.Designer.vb">
+      <DependentUpon>SearcherForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\Buscador.vb">
+    <Compile Include="Presentation\SearcherForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Presentation\ArtistForm.Designer.vb">
@@ -121,10 +121,10 @@
     <Compile Include="Presentation\ArtistForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation\login.Designer.vb">
-      <DependentUpon>login.vb</DependentUpon>
+    <Compile Include="Presentation\LoginForm.Designer.vb">
+      <DependentUpon>LoginForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\login.vb">
+    <Compile Include="Presentation\LoginForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Presentation\SongForm.Designer.vb">
@@ -147,11 +147,11 @@
     <EmbeddedResource Include="Presentation\ArtistForm.resx">
       <DependentUpon>ArtistForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentation\Buscador.resx">
-      <DependentUpon>Buscador.vb</DependentUpon>
+    <EmbeddedResource Include="Presentation\SearcherForm.resx">
+      <DependentUpon>SearcherForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentation\login.resx">
-      <DependentUpon>login.vb</DependentUpon>
+    <EmbeddedResource Include="Presentation\LoginForm.resx">
+      <DependentUpon>LoginForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\SongForm.resx">
       <DependentUpon>SongForm.vb</DependentUpon>

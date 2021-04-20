@@ -1,12 +1,10 @@
-﻿Public Class login
+﻿Public Class loginForm
     Property ofdPath1 As OpenFileDialog = New OpenFileDialog
     Dim filePath As String
     Dim user As User
     Dim s As Song
     Dim a As Artist
     Dim al As Album
-
-
 
     Private Sub ChooseDB_Click(sender As Object, e As EventArgs) Handles ChooseDB.Click
         ofdPath1.Filter = "Microsoft Access Database (.accdb)|*.accdb"
@@ -39,7 +37,7 @@
         If check = True Then
             Me.Hide()
             usr.ReadUser()
-            Dim b As Buscador = New Buscador(usr, filePath)
+            Dim b As SearcherForm = New SearcherForm(usr, filePath)
             b.Show()
         Else
             MessageBox.Show("Login incorrect")
@@ -64,7 +62,7 @@
         Me.s.ReadAllSongs(filePath)
         Try
             For Each song In Me.s.SongDAO.songs
-                ListBox.Items.Add(song.sName)
+                ListBox.Items.Add(song)
             Next
         Catch ex As Exception
             MessageBox.Show(ex.Message)
@@ -609,6 +607,5 @@
         emailBox.Enabled = True
 
     End Sub
-
 
 End Class
