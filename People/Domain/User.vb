@@ -38,5 +38,7 @@
         Return Me.UserDAO.update(Me)
     End Function
 
-
+    Public Overrides Function ToString() As String
+        Return Me.Email
+    End Function
 End Class

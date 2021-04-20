@@ -53,7 +53,6 @@
         resetLabels()
         updateBtt.Enabled = False
         deleteBtt.Enabled = False
-
     End Sub
 
     Private Sub readallSongs()
@@ -75,7 +74,20 @@
         Me.a.ReadAllArtists(filePath)
         Try
             For Each artist In Me.a.ArtistDAO.Artists
-                ListBox.Items.Add(artist.aName)
+                ListBox.Items.Add(artist)
+            Next
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub readallArtistCombo()
+        Dim artist As Artist
+        a = New Artist
+        Me.a.ReadAllArtists(filePath)
+        Try
+            For Each artist In Me.a.ArtistDAO.Artists
+                ArtistBox.Items.Add(artist)
             Next
         Catch ex As Exception
             MessageBox.Show(ex.Message)
@@ -87,7 +99,20 @@
         Me.al.ReadAllAlbums(filePath)
         Try
             For Each album In Me.al.AlbumDAO.Albums
-                ListBox.Items.Add(album.aName)
+                ListBox.Items.Add(album)
+            Next
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub readallAlbumsCombo()
+        Dim album As Album
+        al = New Album
+        Me.al.ReadAllAlbums(filePath)
+        Try
+            For Each album In Me.al.AlbumDAO.Albums
+                albumBox.Items.Add(album)
             Next
         Catch ex As Exception
             MessageBox.Show(ex.Message)
@@ -99,7 +124,7 @@
         Me.user.ReadAllUsers(filePath)
         Try
             For Each u In Me.user.UserDAO.Users
-                ListBox.Items.Add(u.Email)
+                ListBox.Items.Add(u)
             Next
         Catch ex As Exception
             MessageBox.Show(ex.Message)
@@ -129,10 +154,10 @@
     End Sub
 
     Public Sub readSong()
-        Dim song As Song = New Song()
-        song.sName = ListBox.SelectedItem.ToString
+        Dim song As Song
+        song = CType(ListBox.SelectedItem, Song)
         Try
-            song.ReadSongByName()
+            song.ReadSong()
         Catch ex As Exception
             MessageBox.Show(ex.ToString)
         End Try
@@ -143,11 +168,10 @@
     End Sub
 
     Public Sub readAlbum()
-        Dim album As Album = New Album()
-        album.aName = ListBox.SelectedItem.ToString
+        Dim album As Album
+        album = CType(ListBox.SelectedItem, Album)
         Try
-            album.ReadAlbumByName()
-
+            album.ReadAlbum()
         Catch ex As Exception
             MessageBox.Show(ex.ToString)
         End Try
@@ -159,11 +183,10 @@
     End Sub
 
     Public Sub readArtist()
-        Dim artist As Artist = New Artist()
-        artist.aName = ListBox.SelectedItem.ToString
+        Dim artist As Artist
+        artist = CType(ListBox.SelectedItem, Artist)
         Try
-            artist.ReadArtistByName()
-
+            artist.ReadArtist()
         Catch ex As Exception
             MessageBox.Show(ex.ToString)
         End Try
@@ -172,10 +195,10 @@
     End Sub
 
     Public Sub readuser()
-        Dim user As User = New User(ListBox.SelectedItem.ToString)
+        Dim user As User
+        user = CType(ListBox.SelectedItem, User)
         Try
             user.ReadUser()
-
         Catch ex As Exception
             MessageBox.Show(ex.ToString)
         End Try
@@ -252,7 +275,6 @@
     End Sub
 
     Private Sub deleteSong(sName As String)
-
         Dim song As Song = New Song()
         Dim playBack = New PlayBack
         song.sName = sName
@@ -265,11 +287,10 @@
             MessageBox.Show(ex.ToString)
         End Try
         clearBoxes()
-
     End Sub
 
-    Private Sub insertUser(email As String)
-        Me.user = New User(email)
+    Private Sub insertUser()
+        Me.user = New User(emailBox.Text)
         user.uName = nameBox.Text
         user.uSurname = surnameBox.Text
         user.birthdate = birthDateBox.Text
@@ -278,89 +299,64 @@
                 MessageBox.Show("This user already exists")
                 Exit Sub
             End If
-            ListBox.Items.Add(user.Email)
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
+        ListBox.Items.Add(user)
     End Sub
 
-    Private Function insertArtist(aName As String) As Integer
+    Private Sub insertArtist()
         Me.a = New Artist()
-        a.aName = artistBox.Text
+        a.aName = ArtistBox.Text
         a.country = countryBox.Text
         Try
             If a.InsertArtist <> 1 Then
                 MessageBox.Show("This artist already exist")
-                Exit Function
+                Exit Sub
             End If
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-        a.ReadArtistByName()
-        Return a.idArtist
-    End Function
+        ListBox.Items.Add(a)
+    End Sub
 
-    Private Function insertAlbum(aName As String) As Integer
+    Private Sub insertAlbum()
         Me.al = New Album()
-        Dim artist = New Artist
         al.aName = albumBox.Text
         al.releaseDate = relaseDateBox.Text
-        artist.aName = artistBox.Text
-        artist.ReadArtistByName()
-        If artist.idArtist = 0 And countryBox.Enabled = False Then
-            MessageBox.Show("This artist doesnt exists")
-            initArtistBox()
-        Else
-            al.artist = New Artist(insertArtist(artistBox.Text))
-            MessageBox.Show(CType(al.artist.idArtist, String))
-            Try
-                If al.InsertAlbum <> 1 Then
-                    MessageBox.Show("This artist already exist")
-                    Exit Function
-                End If
-            Catch ex As Exception
-                MessageBox.Show(ex.Message)
-            End Try
-        End If
-        al.ReadAlbumByName()
-        Return al.idAlbum
-    End Function
+        al.artist = CType(ArtistBox.SelectedItem, Artist)
+        Try
+            If al.InsertAlbum <> 1 Then
+                MessageBox.Show("This artist already exist")
+                Exit Sub
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        ListBox.Items.Add(al)
+    End Sub
 
-    Private Function insertSong(aName As String) As Integer
+    Private Sub insertSong()
         Me.s = New Song()
-        Dim album = New Album
         s.sName = nameBox.Text
         s.length = CType(lengthBox.Text, Integer)
-        album.aName = albumBox.Text
-        album.ReadAlbumByName()
-        If album.idAlbum = 0 And relaseDateBox.Enabled = False Then
-            MessageBox.Show("This album doesnt exists")
-            initAlbumBox()
-        Else
-            s.album = New Album(insertAlbum(albumBox.Text))
-            MessageBox.Show(CType(s.album.idAlbum, String))
-            If s.album.idAlbum <> 0 Then
-                Try
-                    If s.InsertSong <> 1 Then
-                        MessageBox.Show("This artist already exist")
-                        Exit Function
-                    End If
-                Catch ex As Exception
-                    MessageBox.Show(ex.Message)
-                End Try
+        s.album = CType(albumBox.SelectedItem, Album)
+        Try
+            If s.InsertSong <> 1 Then
+                MessageBox.Show("This artist already exist")
+                Exit Sub
             End If
-        End If
-        s.ReadSongByName()
-        Return s.idSong
-    End Function
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        ListBox.Items.Add(s)
+    End Sub
 
     Private Sub updateSong(sName As String)
         Me.s = New Song()
-        Dim song As Song = New Song
-        song.sName = sName
+        Dim song = CType(ListBox.SelectedItem, Song)
         s.sName = nameBox.Text
         s.length = CType(lengthBox.Text, Integer)
-        song.ReadSongByName()
         s.idSong = song.idSong
         Try
             s.UpdateSong()
@@ -368,18 +364,18 @@
             MessageBox.Show(ex.Message)
         End Try
         clearBoxes()
+        MessageBox.Show(s.sName)
         ListBox.Items.Clear()
         readallSongs()
     End Sub
 
     Private Sub updateAlbum(aName As String)
         Me.al = New Album()
-        Dim album As Album = New Album
-        album.aName = aName
+        Dim album As Album
+        album = CType(ListBox.SelectedItem, Album)
         al.aName = albumBox.Text
         al.releaseDate = relaseDateBox.Text
         al.cover = coverBox.Text
-        album.ReadAlbumByName()
         al.idAlbum = album.idAlbum
         Try
             al.updateAlbum()
@@ -408,14 +404,13 @@
 
     Private Sub updateArtist(aName As String)
         Me.a = New Artist()
-        Dim artist As Artist = New Artist
-        artist.aName = aName
+        Dim artist As Artist
+        artist = CType(ListBox.SelectedItem, Artist)
         a.aName = artistBox.Text
         a.country = countryBox.Text
         a.image = "a"
-        artist.ReadArtistByName()
         a.idArtist = artist.idArtist
-        MessageBox.Show(CType(a.idArtist, String))
+
 
         Try
             a.updateArtist()
@@ -466,51 +461,28 @@
     Private Sub insertBtt_Click(sender As Object, e As EventArgs) Handles insertBtt.Click
         Select Case ComboBox.SelectedIndex
             Case 0
-                Dim idSong As Integer = insertSong(nameBox.Text)
-                If idSong <> 0 Then
-                    Me.s = New Song(idSong)
-                    s.ReadSong()
-                    ListBox.Items.Add(s.sName)
-                    clearBoxes()
-                    resetLabels()
-                    initSongBox()
-                End If
+                insertSong()
+                clearBoxes()
             Case 1
-                Dim idAlbum As Integer = insertAlbum(albumBox.Text)
-                If idAlbum <> 0 Then
-                    Me.al = New Album(idAlbum)
-                    al.ReadAlbum()
-                    ListBox.Items.Add(al.aName)
-                    clearBoxes()
-                    resetLabels()
-                    initAlbumBox()
-                End If
+                insertAlbum()
+                clearBoxes()
 
             Case 2
-                Dim idArtist As Integer = insertArtist(artistBox.Text)
-                If idArtist <> 0 Then
-                    Me.a = New Artist(idArtist)
-                    a.ReadArtist()
-                    ListBox.Items.Add(a.aName)
-                    clearBoxes()
-                    resetLabels()
-                    initArtistBox()
-                End If
-            Case 3
-                insertUser(emailBox.Text)
+                insertArtist()
                 clearBoxes()
-                resetLabels()
-                initUserBox()
+            Case 3
+                insertUser()
+                clearBoxes()
         End Select
-
-
     End Sub
 
     Public Sub clearBoxes()
         nameBox.Clear()
         relaseDateBox.Clear()
-        artistBox.Clear()
-        albumBox.Clear()
+        ArtistBox.ResetText()
+        ArtistBox.Items.Clear()
+        albumBox.ResetText()
+        albumBox.Items.Clear()
         nameBox.Clear()
         countryBox.Clear()
         coverBox.Clear()
@@ -518,6 +490,8 @@
         birthDateBox.Clear()
         surnameBox.Clear()
         lengthBox.Clear()
+        albumBox.DropDownStyle = ComboBoxStyle.DropDown
+        ArtistBox.DropDownStyle = ComboBoxStyle.DropDown
 
     End Sub
     Private Sub initSongBox()
@@ -527,6 +501,7 @@
         albumLabel.Enabled = True
         lengthBox.Enabled = True
         lengthLabel.Enabled = True
+        albumBox.DropDownStyle = ComboBoxStyle.DropDownList
     End Sub
     Private Sub initAlbumBox()
         albumBox.Enabled = True
@@ -537,6 +512,7 @@
         artistLabel.Enabled = True
         coverBox.Enabled = True
         coverLabel.Enabled = True
+        ArtistBox.DropDownStyle = ComboBoxStyle.DropDownList
     End Sub
     Private Sub initArtistBox()
         artistBox.Enabled = True
@@ -563,9 +539,11 @@
             Case 0
                 initSongBox()
                 readallSongs()
+                readallAlbumsCombo()
             Case 1
                 initAlbumBox()
                 readallAlbums()
+                readallArtistCombo()
             Case 2
                 initArtistBox()
                 readallArtist()
@@ -602,9 +580,6 @@
         insertBtt.Enabled = True
         updateBtt.Enabled = False
         deleteBtt.Enabled = False
-        artistBox.Enabled = True
-        albumBox.Enabled = True
-        emailBox.Enabled = True
 
     End Sub
 

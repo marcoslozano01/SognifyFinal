@@ -73,5 +73,8 @@
         Return Me.ArtistDAO.update(Me)
     End Function
 
+    Public Overrides Function ToString() As String
+        Return Me.aName
+    End Function
 
 End Class

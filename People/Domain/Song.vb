@@ -55,7 +55,7 @@
         Me.SongDAO.ReadAllByAlbum(a, path)
     End Sub
 
-    Public Function Overrides ToString() As String
+    Public Overrides Function ToString() As String
         Return Me.sName
     End Function
 End Class

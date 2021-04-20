@@ -51,180 +51,162 @@ Partial Class loginForm
         Me.TextBoxEmail = New System.Windows.Forms.TextBox()
         Me.ChooseDB = New System.Windows.Forms.Button()
         Me.Songify = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.albumBox = New System.Windows.Forms.ComboBox()
+        Me.ArtistBox = New System.Windows.Forms.ComboBox()
         Me.SuspendLayout()
         '
         'ListBox
         '
         Me.ListBox.FormattingEnabled = True
-        Me.ListBox.Location = New System.Drawing.Point(185, 150)
-        Me.ListBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.ListBox.ItemHeight = 20
+        Me.ListBox.Location = New System.Drawing.Point(278, 231)
         Me.ListBox.Name = "ListBox"
-        Me.ListBox.Size = New System.Drawing.Size(139, 134)
+        Me.ListBox.Size = New System.Drawing.Size(206, 204)
         Me.ListBox.TabIndex = 60
         '
         'birthDateBox
         '
-        Me.birthDateBox.Location = New System.Drawing.Point(416, 276)
-        Me.birthDateBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.birthDateBox.Location = New System.Drawing.Point(624, 425)
         Me.birthDateBox.Name = "birthDateBox"
-        Me.birthDateBox.Size = New System.Drawing.Size(119, 20)
+        Me.birthDateBox.Size = New System.Drawing.Size(176, 26)
         Me.birthDateBox.TabIndex = 59
         '
         'birthdateLabel
         '
         Me.birthdateLabel.AutoSize = True
-        Me.birthdateLabel.Location = New System.Drawing.Point(353, 278)
-        Me.birthdateLabel.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.birthdateLabel.Location = New System.Drawing.Point(530, 428)
         Me.birthdateLabel.Name = "birthdateLabel"
-        Me.birthdateLabel.Size = New System.Drawing.Size(51, 13)
+        Me.birthdateLabel.Size = New System.Drawing.Size(77, 20)
         Me.birthdateLabel.TabIndex = 58
         Me.birthdateLabel.Text = "BirthDate"
         '
         'surnameBox
         '
-        Me.surnameBox.Location = New System.Drawing.Point(416, 243)
-        Me.surnameBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.surnameBox.Location = New System.Drawing.Point(624, 374)
         Me.surnameBox.Name = "surnameBox"
-        Me.surnameBox.Size = New System.Drawing.Size(119, 20)
+        Me.surnameBox.Size = New System.Drawing.Size(176, 26)
         Me.surnameBox.TabIndex = 57
         '
         'surnameLabel
         '
         Me.surnameLabel.AutoSize = True
-        Me.surnameLabel.Location = New System.Drawing.Point(353, 243)
-        Me.surnameLabel.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.surnameLabel.Location = New System.Drawing.Point(530, 374)
         Me.surnameLabel.Name = "surnameLabel"
-        Me.surnameLabel.Size = New System.Drawing.Size(49, 13)
+        Me.surnameLabel.Size = New System.Drawing.Size(74, 20)
         Me.surnameLabel.TabIndex = 56
         Me.surnameLabel.Text = "Surname"
         '
         'emailBox
         '
-        Me.emailBox.Location = New System.Drawing.Point(416, 213)
-        Me.emailBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.emailBox.Location = New System.Drawing.Point(624, 328)
         Me.emailBox.Name = "emailBox"
-        Me.emailBox.Size = New System.Drawing.Size(119, 20)
+        Me.emailBox.Size = New System.Drawing.Size(176, 26)
         Me.emailBox.TabIndex = 55
         '
         'EmailLabel
         '
         Me.EmailLabel.AutoSize = True
-        Me.EmailLabel.Location = New System.Drawing.Point(357, 213)
-        Me.EmailLabel.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.EmailLabel.Location = New System.Drawing.Point(536, 328)
         Me.EmailLabel.Name = "EmailLabel"
-        Me.EmailLabel.Size = New System.Drawing.Size(32, 13)
+        Me.EmailLabel.Size = New System.Drawing.Size(48, 20)
         Me.EmailLabel.TabIndex = 54
         Me.EmailLabel.Text = "Email"
         '
         'countryBox
         '
-        Me.countryBox.Location = New System.Drawing.Point(416, 183)
-        Me.countryBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.countryBox.Location = New System.Drawing.Point(624, 282)
         Me.countryBox.Name = "countryBox"
-        Me.countryBox.Size = New System.Drawing.Size(119, 20)
+        Me.countryBox.Size = New System.Drawing.Size(176, 26)
         Me.countryBox.TabIndex = 53
         '
         'countryLabel
         '
         Me.countryLabel.AutoSize = True
-        Me.countryLabel.Location = New System.Drawing.Point(353, 185)
-        Me.countryLabel.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.countryLabel.Location = New System.Drawing.Point(530, 285)
         Me.countryLabel.Name = "countryLabel"
-        Me.countryLabel.Size = New System.Drawing.Size(43, 13)
+        Me.countryLabel.Size = New System.Drawing.Size(64, 20)
         Me.countryLabel.TabIndex = 52
         Me.countryLabel.Text = "Country"
         '
         'coverBox
         '
-        Me.coverBox.Location = New System.Drawing.Point(416, 155)
-        Me.coverBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.coverBox.Location = New System.Drawing.Point(624, 238)
         Me.coverBox.Name = "coverBox"
-        Me.coverBox.Size = New System.Drawing.Size(119, 20)
+        Me.coverBox.Size = New System.Drawing.Size(176, 26)
         Me.coverBox.TabIndex = 51
         '
         'coverLabel
         '
         Me.coverLabel.AutoSize = True
-        Me.coverLabel.Location = New System.Drawing.Point(353, 157)
-        Me.coverLabel.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.coverLabel.Location = New System.Drawing.Point(530, 242)
         Me.coverLabel.Name = "coverLabel"
-        Me.coverLabel.Size = New System.Drawing.Size(35, 13)
+        Me.coverLabel.Size = New System.Drawing.Size(50, 20)
         Me.coverLabel.TabIndex = 50
         Me.coverLabel.Text = "Cover"
         '
         'artistLabel
         '
         Me.artistLabel.AutoSize = True
-        Me.artistLabel.Location = New System.Drawing.Point(357, 122)
-        Me.artistLabel.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.artistLabel.Location = New System.Drawing.Point(536, 188)
         Me.artistLabel.Name = "artistLabel"
-        Me.artistLabel.Size = New System.Drawing.Size(30, 13)
+        Me.artistLabel.Size = New System.Drawing.Size(46, 20)
         Me.artistLabel.TabIndex = 48
         Me.artistLabel.Text = "Artist"
         '
         'relaseDateBox
         '
-        Me.relaseDateBox.Location = New System.Drawing.Point(416, 93)
-        Me.relaseDateBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.relaseDateBox.Location = New System.Drawing.Point(624, 143)
         Me.relaseDateBox.Name = "relaseDateBox"
-        Me.relaseDateBox.Size = New System.Drawing.Size(119, 20)
+        Me.relaseDateBox.Size = New System.Drawing.Size(176, 26)
         Me.relaseDateBox.TabIndex = 47
         '
         'relaseLabel
         '
         Me.relaseLabel.AutoSize = True
-        Me.relaseLabel.Location = New System.Drawing.Point(353, 93)
-        Me.relaseLabel.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.relaseLabel.Location = New System.Drawing.Point(530, 143)
         Me.relaseLabel.Name = "relaseLabel"
-        Me.relaseLabel.Size = New System.Drawing.Size(63, 13)
+        Me.relaseLabel.Size = New System.Drawing.Size(94, 20)
         Me.relaseLabel.TabIndex = 46
         Me.relaseLabel.Text = "RelaseDate"
         '
         'lengthBox
         '
-        Me.lengthBox.Location = New System.Drawing.Point(416, 63)
-        Me.lengthBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.lengthBox.Location = New System.Drawing.Point(624, 97)
         Me.lengthBox.Name = "lengthBox"
-        Me.lengthBox.Size = New System.Drawing.Size(119, 20)
+        Me.lengthBox.Size = New System.Drawing.Size(176, 26)
         Me.lengthBox.TabIndex = 45
         '
         'lengthLabel
         '
         Me.lengthLabel.AutoSize = True
-        Me.lengthLabel.Location = New System.Drawing.Point(353, 63)
-        Me.lengthLabel.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lengthLabel.Location = New System.Drawing.Point(530, 97)
         Me.lengthLabel.Name = "lengthLabel"
-        Me.lengthLabel.Size = New System.Drawing.Size(40, 13)
+        Me.lengthLabel.Size = New System.Drawing.Size(59, 20)
         Me.lengthLabel.TabIndex = 44
         Me.lengthLabel.Text = "Length"
         '
         'albumLabel
         '
         Me.albumLabel.AutoSize = True
-        Me.albumLabel.Location = New System.Drawing.Point(353, 35)
-        Me.albumLabel.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.albumLabel.Location = New System.Drawing.Point(530, 54)
         Me.albumLabel.Name = "albumLabel"
-        Me.albumLabel.Size = New System.Drawing.Size(36, 13)
+        Me.albumLabel.Size = New System.Drawing.Size(54, 20)
         Me.albumLabel.TabIndex = 42
         Me.albumLabel.Text = "Album"
         '
         'nameBox
         '
-        Me.nameBox.Location = New System.Drawing.Point(416, 8)
-        Me.nameBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.nameBox.Location = New System.Drawing.Point(624, 12)
         Me.nameBox.Name = "nameBox"
-        Me.nameBox.Size = New System.Drawing.Size(119, 20)
+        Me.nameBox.Size = New System.Drawing.Size(176, 26)
         Me.nameBox.TabIndex = 41
         '
         'nameLabel
         '
         Me.nameLabel.AutoSize = True
-        Me.nameLabel.Location = New System.Drawing.Point(352, 6)
-        Me.nameLabel.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.nameLabel.Location = New System.Drawing.Point(528, 9)
         Me.nameLabel.Name = "nameLabel"
-        Me.nameLabel.Size = New System.Drawing.Size(35, 13)
+        Me.nameLabel.Size = New System.Drawing.Size(51, 20)
         Me.nameLabel.TabIndex = 40
         Me.nameLabel.Text = "Name"
         '
@@ -232,48 +214,43 @@ Partial Class loginForm
         '
         Me.ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox.FormattingEnabled = True
-        Me.ComboBox.Location = New System.Drawing.Point(17, 93)
-        Me.ComboBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.ComboBox.Location = New System.Drawing.Point(26, 143)
         Me.ComboBox.Name = "ComboBox"
-        Me.ComboBox.Size = New System.Drawing.Size(118, 21)
+        Me.ComboBox.Size = New System.Drawing.Size(175, 28)
         Me.ComboBox.TabIndex = 39
         '
         'ClearBtt
         '
-        Me.ClearBtt.Location = New System.Drawing.Point(85, 238)
-        Me.ClearBtt.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.ClearBtt.Location = New System.Drawing.Point(128, 366)
         Me.ClearBtt.Name = "ClearBtt"
-        Me.ClearBtt.Size = New System.Drawing.Size(50, 25)
+        Me.ClearBtt.Size = New System.Drawing.Size(75, 38)
         Me.ClearBtt.TabIndex = 38
         Me.ClearBtt.Text = "Clear"
         Me.ClearBtt.UseVisualStyleBackColor = True
         '
         'deleteBtt
         '
-        Me.deleteBtt.Location = New System.Drawing.Point(3, 238)
-        Me.deleteBtt.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.deleteBtt.Location = New System.Drawing.Point(4, 366)
         Me.deleteBtt.Name = "deleteBtt"
-        Me.deleteBtt.Size = New System.Drawing.Size(50, 25)
+        Me.deleteBtt.Size = New System.Drawing.Size(75, 38)
         Me.deleteBtt.TabIndex = 37
         Me.deleteBtt.Text = "Delete"
         Me.deleteBtt.UseVisualStyleBackColor = True
         '
         'updateBtt
         '
-        Me.updateBtt.Location = New System.Drawing.Point(85, 184)
-        Me.updateBtt.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.updateBtt.Location = New System.Drawing.Point(128, 283)
         Me.updateBtt.Name = "updateBtt"
-        Me.updateBtt.Size = New System.Drawing.Size(50, 27)
+        Me.updateBtt.Size = New System.Drawing.Size(75, 42)
         Me.updateBtt.TabIndex = 36
         Me.updateBtt.Text = "update"
         Me.updateBtt.UseVisualStyleBackColor = True
         '
         'insertBtt
         '
-        Me.insertBtt.Location = New System.Drawing.Point(3, 184)
-        Me.insertBtt.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.insertBtt.Location = New System.Drawing.Point(4, 283)
         Me.insertBtt.Name = "insertBtt"
-        Me.insertBtt.Size = New System.Drawing.Size(50, 27)
+        Me.insertBtt.Size = New System.Drawing.Size(75, 42)
         Me.insertBtt.TabIndex = 35
         Me.insertBtt.Text = "Insert"
         Me.insertBtt.UseVisualStyleBackColor = True
@@ -281,37 +258,33 @@ Partial Class loginForm
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(0, 14)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label1.Location = New System.Drawing.Point(0, 22)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(33, 13)
+        Me.Label1.Size = New System.Drawing.Size(48, 20)
         Me.Label1.TabIndex = 34
         Me.Label1.Text = "Login"
         '
         'loginBtt
         '
-        Me.loginBtt.Location = New System.Drawing.Point(11, 51)
-        Me.loginBtt.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.loginBtt.Location = New System.Drawing.Point(16, 78)
         Me.loginBtt.Name = "loginBtt"
-        Me.loginBtt.Size = New System.Drawing.Size(50, 27)
+        Me.loginBtt.Size = New System.Drawing.Size(75, 42)
         Me.loginBtt.TabIndex = 33
         Me.loginBtt.Text = "Login"
         Me.loginBtt.UseVisualStyleBackColor = True
         '
         'TextBoxEmail
         '
-        Me.TextBoxEmail.Location = New System.Drawing.Point(46, 14)
-        Me.TextBoxEmail.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TextBoxEmail.Location = New System.Drawing.Point(69, 22)
         Me.TextBoxEmail.Name = "TextBoxEmail"
-        Me.TextBoxEmail.Size = New System.Drawing.Size(104, 20)
+        Me.TextBoxEmail.Size = New System.Drawing.Size(154, 26)
         Me.TextBoxEmail.TabIndex = 32
         '
         'ChooseDB
         '
-        Me.ChooseDB.Location = New System.Drawing.Point(85, 51)
-        Me.ChooseDB.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.ChooseDB.Location = New System.Drawing.Point(128, 78)
         Me.ChooseDB.Name = "ChooseDB"
-        Me.ChooseDB.Size = New System.Drawing.Size(78, 27)
+        Me.ChooseDB.Size = New System.Drawing.Size(117, 42)
         Me.ChooseDB.TabIndex = 31
         Me.ChooseDB.Text = "ChooseDB"
         Me.ChooseDB.UseVisualStyleBackColor = True
@@ -320,37 +293,40 @@ Partial Class loginForm
         '
         Me.Songify.AutoSize = True
         Me.Songify.Font = New System.Drawing.Font("Comic Sans MS", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Songify.Location = New System.Drawing.Point(193, 44)
+        Me.Songify.Location = New System.Drawing.Point(290, 68)
+        Me.Songify.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Songify.Name = "Songify"
-        Me.Songify.Size = New System.Drawing.Size(115, 38)
+        Me.Songify.Size = New System.Drawing.Size(173, 58)
         Me.Songify.TabIndex = 61
         Me.Songify.Text = "Songify"
         Me.Songify.UseMnemonic = False
         '
-        'ComboBox1
+        'albumBox
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(416, 37)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(119, 21)
-        Me.ComboBox1.TabIndex = 62
+        Me.albumBox.FormattingEnabled = True
+        Me.albumBox.Location = New System.Drawing.Point(624, 57)
+        Me.albumBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.albumBox.Name = "albumBox"
+        Me.albumBox.Size = New System.Drawing.Size(176, 28)
+        Me.albumBox.TabIndex = 62
         '
-        'ComboBox2
+        'ArtistBox
         '
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(414, 122)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox2.TabIndex = 63
+        Me.ArtistBox.FormattingEnabled = True
+        Me.ArtistBox.Location = New System.Drawing.Point(621, 188)
+        Me.ArtistBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.ArtistBox.Name = "ArtistBox"
+        Me.ArtistBox.Size = New System.Drawing.Size(180, 28)
+        Me.ArtistBox.TabIndex = 63
         '
         'loginForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(549, 312)
-        Me.Controls.Add(Me.ComboBox2)
-        Me.Controls.Add(Me.ComboBox1)
+        Me.ClientSize = New System.Drawing.Size(824, 480)
+        Me.Controls.Add(Me.ArtistBox)
+        Me.Controls.Add(Me.albumBox)
         Me.Controls.Add(Me.Songify)
         Me.Controls.Add(Me.ListBox)
         Me.Controls.Add(Me.birthDateBox)
@@ -380,7 +356,6 @@ Partial Class loginForm
         Me.Controls.Add(Me.loginBtt)
         Me.Controls.Add(Me.TextBoxEmail)
         Me.Controls.Add(Me.ChooseDB)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "loginForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Songify"
@@ -418,6 +393,6 @@ Partial Class loginForm
     Friend WithEvents TextBoxEmail As TextBox
     Friend WithEvents ChooseDB As Button
     Friend WithEvents Songify As Label
-    Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents ComboBox2 As ComboBox
+    Friend WithEvents albumBox As ComboBox
+    Friend WithEvents ArtistBox As ComboBox
 End Class
