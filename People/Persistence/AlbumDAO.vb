@@ -44,16 +44,6 @@
             a.cover = aux(5).ToString
         Next
     End Sub
-    Public Sub ReadByName(ByRef al As Album)
-        Dim col As Collection : Dim aux As Collection
-        col = DBBroker.GetBroker.Read("SELECT * FROM ALBUMS WHERE aName='" & al.aName & "';")
-        For Each aux In col
-            al.idAlbum = CType(aux(1).ToString, Integer)
-            al.releaseDate = aux(3).ToString
-            al.artist = New Artist(CType(aux(4).ToString, Integer))
-            al.cover = aux(5).ToString
-        Next
-    End Sub
     Public Sub ReadSearcher(search As String)
         Dim a As Album
         Dim chain As String = search + "%"
@@ -73,12 +63,12 @@
         Return DBBroker.GetBroker.Change("INSERT INTO [ALBUMS] ([aName],[releaseDate],[artist],[cover]) VALUES ('" & al.aName & "',#" & al.releaseDate & "#," & al.artist.idArtist & ",'" & al.cover & "');")
     End Function
 
-    Public Function DeleteByArtist(ByVal al As Album) As Integer
-        Return DBBroker.GetBroker.Change("DELETE FROM ALBUMS WHERE artist=" & al.artist.idArtist & ";")
-    End Function
-
     Public Function Delete(ByVal al As Album) As Integer
-        Return DBBroker.GetBroker.Change("DELETE FROM ALBUMS WHERE IdAlbum=" & al.idAlbum & ";")
+        Dim columns As Integer
+        columns += DBBroker.GetBroker.Change("DELETE DISTINCTROW PLAYBACKS.* FROM (PLAYBACKS INNER JOIN SONGS  ON PLAYBACKS.song = SONGS.IdSong) INNER JOIN ALBUMS ON SONGS.Album= ALBUMS.IdAlbum WHERE IdAlbum=" & al.idAlbum & ";")
+        columns += DBBroker.GetBroker.Change("Delete *From SONGS Where Exists( Select 1 From ALBUMS Where SONGS.Album =" & al.idAlbum & ") = True;")
+        columns += DBBroker.GetBroker.Change("DELETE FROM ALBUMS WHERE IdAlbum=" & al.idAlbum & ";")
+        Return columns
     End Function
 
     Public Function Update(ByVal a As Album) As Integer

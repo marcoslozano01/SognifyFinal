@@ -18,7 +18,7 @@
         Next
     End Sub
 
-    Public Sub ReadByName(ByRef s As Song)
+    Public Sub ReadAllHistory(ByRef s As Song)
         Dim p As PlayBack
         Dim col, aux As Collection
         col = DBBroker.GetBroker.Read("SELECT * FROM PLAYBACKS WHERE song=" & s.idSong & ";")

@@ -28,40 +28,34 @@
             End Try
 
             For Each song In s.SongDAO.songs
-                ListSongs.Items.Add(song.sName)
+                ListSongs.Items.Add(song)
             Next
             For Each artist In a.ArtistDAO.Artists
-                ListArtists.Items.Add(artist.aName)
+                ListArtists.Items.Add(artist)
             Next
             For Each album In al.AlbumDAO.Albums
-                ListAlbums.Items.Add(album.aName)
+                ListAlbums.Items.Add(album)
             Next
         End If
 
     End Sub
-
-
-
     Private Sub ListSongs_DoubleClick(sender As Object, e As EventArgs) Handles ListSongs.DoubleClick
-        Dim song As Song = New Song()
-        song.sName = ListSongs.SelectedItem.ToString
-        song.ReadSongByName()
+        Dim song As Song
+        song = CType(ListSongs.SelectedItem, Song)
         Dim f As Form = New SongForm(song, user)
         f.Show()
     End Sub
 
     Private Sub ListArtists_DoubleClick(sender As Object, e As EventArgs) Handles ListArtists.DoubleClick
-        Dim artist As Artist = New Artist()
-        artist.aName = ListArtists.SelectedItem.ToString
-        artist.ReadArtistByName()
+        Dim artist As Artist
+        artist = CType(ListArtists.SelectedItem, Artist)
         Dim f As Form = New ArtistForm(artist, user, filePath)
         f.Show()
     End Sub
 
     Private Sub ListAlbums_DoubleClick(sender As Object, e As EventArgs) Handles ListAlbums.DoubleClick
-        Dim album As Album = New Album()
-        album.aName = ListAlbums.SelectedItem.ToString
-        album.ReadAlbumByName()
+        Dim album As Album
+        album = CType(ListAlbums.SelectedItem, Album)
         Dim f As Form = New AlbumForm(album, user, filePath)
         f.Show()
     End Sub

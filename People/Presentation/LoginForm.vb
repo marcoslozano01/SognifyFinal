@@ -209,14 +209,9 @@
     End Sub
 
     Public Sub deleteUser()
-        Dim user As User = New User(emailBox.Text)
-        Dim playback = New PlayBack
-        Dim fav_artist = New Artist
-        playback.user = New User(user.Email)
-        fav_artist.user = New User(user.Email)
+        Dim user As User
+        user = CType(ListBox.SelectedItem, User)
         Try
-            fav_artist.deletefavArtistByUser()
-            playback.deletePlayBackByUser()
             user.DeleteUser()
         Catch ex As Exception
             MessageBox.Show(ex.ToString)
@@ -225,63 +220,30 @@
     End Sub
 
     Public Sub deleteArtist(aName As String)
-        Dim artist = New Artist()
-        Dim album As Album
-        Dim fav_artist = New Artist
-        al = New Album
-        artist.aName = aName
-        artist.ReadArtistByName()
-        Me.al.ReadAllAlbums(filePath)
-        fav_artist.artist = New Artist(artist.idArtist)
-        fav_artist.ReadArtist()
+        Dim artist As Artist
+        artist = CType(ListBox.SelectedItem, Artist)
         Try
-            For Each album In Me.al.AlbumDAO.Albums
-                album.artist.ReadArtist()
-                If album.artist.idArtist = artist.idArtist Then
-                    deleteAlbum(album.aName)
-                End If
-            Next
-            fav_artist.deletefavArtistByArtist()
             artist.DeleteArtist()
         Catch ex As Exception
             MessageBox.Show(ex.ToString)
         End Try
         clearBoxes()
-
-
     End Sub
 
     Public Sub deleteAlbum(aName As String)
-        Dim album As Album = New Album()
-        Dim song As Song
-        Me.s = New Song
-        album.aName = aName
-        album.ReadAlbumByName()
-        Me.s.ReadAllSongs(filePath)
+        Dim album As Album
+        album = CType(ListBox.SelectedItem, Album)
         Try
-            For Each song In Me.s.SongDAO.songs
-                song.album.ReadAlbum()
-                If song.album.idAlbum = album.idAlbum Then
-                    deleteSong(song.sName)
-                End If
-            Next
             album.DeleteAlbum()
-
         Catch ex As Exception
             MessageBox.Show(ex.ToString)
         End Try
         clearBoxes()
-
     End Sub
-
     Private Sub deleteSong(sName As String)
-        Dim song As Song = New Song()
-        Dim playBack = New PlayBack
-        song.sName = sName
+        Dim song As Song
+        song = CType(ListBox.SelectedItem, Song)
         Try
-            song.ReadSongByName()
-            playBack.song = song
-            playBack.deletePlayBackBySong()
             song.Delete()
         Catch ex As Exception
             MessageBox.Show(ex.ToString)
@@ -339,9 +301,9 @@
     Private Sub insertSong()
         Me.s = New Song()
         s.sName = nameBox.Text
-        s.length = CType(lengthBox.Text, Integer)
         s.album = CType(albumBox.SelectedItem, Album)
         Try
+            s.length = CType(lengthBox.Text, Integer)
             If s.InsertSong <> 1 Then
                 MessageBox.Show("This artist already exist")
                 Exit Sub
@@ -356,9 +318,9 @@
         Me.s = New Song()
         Dim song = CType(ListBox.SelectedItem, Song)
         s.sName = nameBox.Text
-        s.length = CType(lengthBox.Text, Integer)
         s.idSong = song.idSong
         Try
+            s.length = CType(lengthBox.Text, Integer)
             s.UpdateSong()
         Catch ex As Exception
             MessageBox.Show(ex.Message)
@@ -410,8 +372,6 @@
         a.country = countryBox.Text
         a.image = "a"
         a.idArtist = artist.idArtist
-
-
         Try
             a.updateArtist()
         Catch ex As Exception
@@ -431,7 +391,6 @@
                 Case 1
                     updateAlbum(ListBox.SelectedItem.ToString)
                     clearBoxes()
-
                 Case 2
                     updateArtist(ListBox.SelectedItem.ToString)
                     clearBoxes()
@@ -443,30 +402,43 @@
     End Sub
 
     Private Sub deleteBtt_Click(sender As Object, e As EventArgs) Handles deleteBtt.Click
-        Select Case ComboBox.SelectedIndex
-            Case 0
-                deleteSong(ListBox.SelectedItem.ToString)
-                ListBox.Items.RemoveAt(ListBox.SelectedIndex)
-            Case 1
-                deleteAlbum(ListBox.SelectedItem.ToString)
-                ListBox.Items.RemoveAt(ListBox.SelectedIndex)
-            Case 2
-                deleteArtist(ListBox.SelectedItem.ToString)
-                ListBox.Items.RemoveAt(ListBox.SelectedIndex)
-            Case 3
-                deleteUser()
-                ListBox.Items.RemoveAt(ListBox.SelectedIndex)
-        End Select
+        If ListBox.SelectedIndex >= 0 Then
+            Select Case ComboBox.SelectedIndex
+                Case 0
+                    deleteSong(ListBox.SelectedItem.ToString)
+                    ListBox.Items.RemoveAt(ListBox.SelectedIndex)
+                Case 1
+                    deleteAlbum(ListBox.SelectedItem.ToString)
+                    ListBox.Items.RemoveAt(ListBox.SelectedIndex)
+                Case 2
+                    deleteArtist(ListBox.SelectedItem.ToString)
+                    ListBox.Items.RemoveAt(ListBox.SelectedIndex)
+                Case 3
+                    deleteUser()
+                    ListBox.Items.RemoveAt(ListBox.SelectedIndex)
+            End Select
+        End If
     End Sub
     Private Sub insertBtt_Click(sender As Object, e As EventArgs) Handles insertBtt.Click
         Select Case ComboBox.SelectedIndex
             Case 0
-                insertSong()
-                clearBoxes()
+                If albumBox.SelectedIndex >= 0 Then
+                    insertSong()
+                    clearBoxes()
+                Else
+                    MessageBox.Show("Please select an Album")
+                    clearBoxes()
+                    readallAlbumsCombo()
+                End If
             Case 1
-                insertAlbum()
-                clearBoxes()
-
+                If ArtistBox.SelectedIndex >= 0 Then
+                    insertAlbum()
+                    clearBoxes()
+                Else
+                    MessageBox.Show("Please select an artist")
+                    clearBoxes()
+                    readallArtistCombo()
+                End If
             Case 2
                 insertArtist()
                 clearBoxes()
@@ -580,6 +552,18 @@
         insertBtt.Enabled = True
         updateBtt.Enabled = False
         deleteBtt.Enabled = False
+        Select Case ComboBox.SelectedIndex
+            Case 0
+                initSongBox()
+                readallAlbumsCombo()
+            Case 1
+                initAlbumBox()
+                readallArtistCombo()
+            Case 2
+                initArtistBox()
+            Case 3
+                initUserBox()
+        End Select
 
     End Sub
 

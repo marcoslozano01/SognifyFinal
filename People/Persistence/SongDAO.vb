@@ -74,9 +74,10 @@
     End Function
 
     Public Function Delete(ByVal s As Song) As Integer
-
-        Return DBBroker.GetBroker.Change("DELETE FROM SONGS WHERE IdSong=" & s.idSong & ";")
-
+        Dim columns As Integer
+        columns = DBBroker.GetBroker.Change("Delete * From PLAYBACKS Where Exists( Select 1 From SONGS Where PLAYBACKS.song=" & s.idSong & ") = True;")
+        columns = columns + DBBroker.GetBroker.Change("DELETE FROM SONGS WHERE IdSong=" & s.idSong & ";")
+        Return columns
     End Function
 
     Public Function Update(ByVal s As Song) As Integer

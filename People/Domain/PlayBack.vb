@@ -19,7 +19,7 @@
     End Sub
 
     Public Sub ReadHistory(s As Song)
-        Me.PlayBackDAO.ReadByName(s)
+        Me.PlayBackDAO.ReadAllHistory(s)
     End Sub
     Public Sub ReadPlayBack()
         Me.PlayBackDAO.Read(Me)
@@ -27,14 +27,6 @@
 
     Public Function InsertPlayBack() As Integer
         Return Me.PlayBackDAO.Insert(Me)
-    End Function
-
-    Public Function deletePlayBackByUser() As Integer
-        Return Me.PlayBackDAO.DeleteByUser(Me)
-    End Function
-
-    Public Function deletePlayBackBySong() As Integer
-        Return Me.PlayBackDAO.DeleteBySong(Me)
     End Function
 
 End Class

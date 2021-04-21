@@ -27,10 +27,6 @@
         Me.AlbumDAO.ReadAllByArtist(path, Me)
     End Sub
 
-    Public Sub ReadAlbumByName()
-        Me.AlbumDAO.ReadByName(Me)
-    End Sub
-
     Public Sub ReadAlbum()
         Me.AlbumDAO.Read(Me)
     End Sub
@@ -41,10 +37,6 @@
 
     Public Function InsertAlbum() As Integer
         Return Me.AlbumDAO.Insert(Me)
-    End Function
-
-    Public Function DeleteAlbumByArtist() As Integer
-        Return Me.AlbumDAO.DeleteByArtist(Me)
     End Function
 
     Public Function DeleteAlbum() As Integer

@@ -87,20 +87,18 @@
     End Function
 
     Public Function Delete(ByVal a As Artist) As Integer
-        Return DBBroker.GetBroker.Change("DELETE FROM ARTISTS WHERE IdArtist=" & a.idArtist & ";")
+        Dim columns As Integer
+        columns += DBBroker.GetBroker.Change("DELETE DISTINCTROW PLAYBACKS.* FROM ((PLAYBACKS INNER JOIN SONGS  ON PLAYBACKS.song = SONGS.IdSong) INNER JOIN ALBUMS ON SONGS.Album= ALBUMS.IdAlbum) INNER JOIN ARTISTS ON ALBUMS.Artist= ARTISTS.IdArtist WHERE ARTISTS.IdArtist=" & a.idArtist & ";")
+        columns += DBBroker.GetBroker.Change("DELETE DISTINCTROW SONGS.* FROM (SONGS INNER JOIN ALBUMS ON SONGS.Album = ALBUMS.IdAlbum) INNER JOIN ARTISTS ON ALBUMS.Artist = ARTISTS.IdArtist WHERE ARTISTS.IdArtist=" & a.idArtist & ";")
+        columns += DBBroker.GetBroker.Change("Delete * From AlBUMS Where Exists( Select 1 From ARTISTS Where ALBUMS.Artist =" & a.idArtist & ") = True;")
+        columns += DBBroker.GetBroker.Change("DELETE FROM ARTISTS WHERE IdArtist=" & a.idArtist & ";")
+        Return columns
     End Function
 
     Public Function DeleteFav(ByVal a As Artist) As Integer
         Return DBBroker.GetBroker.Change("DELETE FROM [FAV_ARTISTS] WHERE user='" & a.user.Email & "' AND artist=" & a.artist.idArtist & ";")
     End Function
 
-    Public Function DeleteFavByUser(ByVal f As Artist) As Integer
-        Return DBBroker.GetBroker.Change("DELETE FROM FAV_ARTISTS WHERE user='" & f.user.Email & "';")
-    End Function
-
-    Public Function DeleteFavByArtist(ByVal f As Artist) As Integer
-        Return DBBroker.GetBroker.Change("DELETE FROM FAV_ARTISTS WHERE artist=" & f.artist.idArtist & ";")
-    End Function
 
     Public Function Update(ByVal a As Artist) As Integer
         Return DBBroker.GetBroker.Change("UPDATE [ARTISTS] SET [aName]='" & a.aName & "', [country]='" & a.country & "', [image]='" & a.image & "' WHERE [idArtist]=" & a.idArtist & ";")

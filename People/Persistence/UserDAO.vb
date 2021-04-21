@@ -31,7 +31,11 @@
     End Sub
 
     Public Function Delete(ByVal u As User) As Integer
-        Return DBBroker.GetBroker.Change("DELETE FROM USERS WHERE Email='" & u.Email & "';")
+        Dim columns As Integer
+        columns += DBBroker.GetBroker.Change("Delete * From FAV_ARTISTS Where Exists( Select 1 From USERS Where FAV_ARTISTS.user='" & u.Email & "') = True;")
+        columns += DBBroker.GetBroker.Change("Delete * From PLAYBACKS Where Exists( Select 1 From USERS Where PLAYBACKS.user='" & u.Email & "') = True;")
+        columns += DBBroker.GetBroker.Change("DELETE FROM USERS WHERE Email='" & u.Email & "';")
+        Return columns
     End Function
 
     Public Function Insert(ByVal u As User) As Integer

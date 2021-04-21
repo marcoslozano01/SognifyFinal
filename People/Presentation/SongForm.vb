@@ -51,9 +51,7 @@
         For Each playBack In p.PlayBackDAO.PlayBacks
             ListHistory.Items.Add(playback.user.Email & " " & playback.plDate)
         Next
-
     End Sub
-
     Private Sub backButton_Click(sender As Object, e As EventArgs) Handles backButton.Click
         Hide()
     End Sub

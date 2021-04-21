@@ -23,12 +23,12 @@
         Me.SongDAO.ReadAll(path)
     End Sub
 
-    Public Sub ReadSong()
-        Me.SongDAO.Read(Me)
+    Public Sub ReadAllSongsByAlbum(path As String, album As Album)
+        Me.SongDAO.ReadAllByAlbum(album, path)
     End Sub
 
-    Public Sub ReadSongByName()
-        Me.SongDAO.ReadByName(Me)
+    Public Sub ReadSong()
+        Me.SongDAO.Read(Me)
     End Sub
 
     Public Sub ReadSearcher(chain As String)
@@ -39,9 +39,6 @@
         Return Me.SongDAO.Insert(Me)
     End Function
 
-    Public Function DeleteByAlbum() As Integer
-        Return Me.SongDAO.DeleteByAlbum(Me)
-    End Function
 
     Public Function Delete() As Integer
         Return Me.SongDAO.Delete(Me)
@@ -50,10 +47,6 @@
     Public Function UpdateSong() As Integer
         Return Me.SongDAO.update(Me)
     End Function
-
-    Public Sub ReadAllSongsByAlbum(a As Album, path As String)
-        Me.SongDAO.ReadAllByAlbum(a, path)
-    End Sub
 
     Public Overrides Function ToString() As String
         Return Me.sName

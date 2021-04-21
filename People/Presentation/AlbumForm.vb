@@ -37,11 +37,10 @@
     Private Sub ReadAllSongsByAlbum()
         Dim s As Song = New Song()
         Dim song As Song
-        s.ReadAllSongsByAlbum(album, filePath)
+        s.ReadAllSongsByAlbum(filePath, album)
         Try
             For Each song In s.SongDAO.songs
                 songsBox.Items.Add(song.sName)
-
             Next
         Catch ex As Exception
             MessageBox.Show(ex.Message)
