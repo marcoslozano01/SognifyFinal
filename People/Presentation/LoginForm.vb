@@ -381,18 +381,22 @@
                 If albumBox.SelectedIndex >= 0 Then
                     insertSong()
                     clearBoxes()
+                    initSongBox()
+                    readallAlbumsCombo()
                 Else
                     MessageBox.Show("Please select an Album")
-                    clearBoxes()
+                    initSongBox()
                     readallAlbumsCombo()
                 End If
             Case 1
                 If ArtistBox.SelectedIndex >= 0 Then
                     insertAlbum()
                     clearBoxes()
+                    initAlbumBox()
+                    readallArtistCombo()
                 Else
                     MessageBox.Show("Please select an artist")
-                    clearBoxes()
+                    initAlbumBox()
                     readallArtistCombo()
                 End If
             Case 2

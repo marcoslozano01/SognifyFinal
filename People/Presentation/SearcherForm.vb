@@ -64,7 +64,6 @@
             f.Show()
         End If
     End Sub
-
     Private Sub ListAlbums_DoubleClick(sender As Object, e As EventArgs) Handles ListAlbums.DoubleClick
         If ListAlbums.SelectedItem IsNot Nothing Then
             Dim album As Album
