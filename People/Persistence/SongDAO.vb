@@ -55,7 +55,18 @@
             Me.songs.Add(S)
         Next
     End Sub
+    Public Sub ReadSongsSort()
+        Dim s As Song
+        Dim col As Collection : Dim aux As Collection
+        col = DBBroker.GetBroker.Read("SELECT SONGS.idSong, SONGS.sName, Count(PLAYBACKS.song) FROM SONGS INNER JOIN PLAYBACKS ON SONGS.idSong = PLAYBACKS.song GROUP BY SONGS.idSong, SONGS.sName ORDER BY Count(PLAYBACKS.song) DESC;")
+        Dim st As String = ""
+        For Each aux In col
+            s = New Song(CType(aux(1).ToString, Integer))
+            s.sName = aux(2).ToString
+            Me.songs.Add(s)
+        Next
 
+    End Sub
     Public Function Insert(ByVal s As Song) As Integer
         Return DBBroker.GetBroker.Change("INSERT INTO [SONGS] ([sName],[Album],[length]) VALUES ('" & s.sName & "'," & s.album.idAlbum & "," & s.length & ");")
     End Function

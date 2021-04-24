@@ -31,6 +31,14 @@
         Me.ArtistDAO.ReadArtist(Me)
     End Sub
 
+    Public Sub ReadArtistsSort()
+        Me.ArtistDAO.ReadArtistsSort()
+    End Sub
+
+    Public Sub ReadArtistsDate(iniDate As Date, endDate As Date)
+        Me.ArtistDAO.ReadArtistsDate(Me, iniDate, endDate)
+    End Sub
+
     Public Sub ReadAllFavArtists(path As String)
         Me.ArtistDAO.ReadAllFavArtist(path)
     End Sub

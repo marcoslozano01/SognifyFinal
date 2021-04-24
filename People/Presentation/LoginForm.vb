@@ -239,10 +239,11 @@
         a.image = imageBox.Text
         Try
             a.InsertArtist()
+            ListBox.Items.Add(a)
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-        ListBox.Items.Add(a)
+
     End Sub
 
     Private Sub insertAlbum()
@@ -252,10 +253,10 @@
         al.artist = CType(ArtistBox.SelectedItem, Artist)
         Try
             al.InsertAlbum()
+            ListBox.Items.Add(al)
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-        ListBox.Items.Add(al)
     End Sub
 
     Private Sub insertSong()
@@ -265,10 +266,10 @@
         Try
             s.length = CType(lengthBox.Text, Integer)
             s.InsertSong()
+            ListBox.Items.Add(s)
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-        ListBox.Items.Add(s)
     End Sub
 
     Private Sub updateSong(sName As String)

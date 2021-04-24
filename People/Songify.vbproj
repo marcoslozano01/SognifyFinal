@@ -109,6 +109,12 @@
     <Compile Include="Presentation\AlbumForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Presentation\DatesForm.Designer.vb">
+      <DependentUpon>DatesForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\DatesForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Presentation\SearcherForm.Designer.vb">
       <DependentUpon>SearcherForm.vb</DependentUpon>
     </Compile>
@@ -146,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\ArtistForm.resx">
       <DependentUpon>ArtistForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\DatesForm.resx">
+      <DependentUpon>DatesForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\SearcherForm.resx">
       <DependentUpon>SearcherForm.vb</DependentUpon>

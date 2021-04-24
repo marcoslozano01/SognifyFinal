@@ -68,6 +68,31 @@
         Next
     End Sub
 
+    Public Sub ReadArtistsSort()
+        Dim artist As Artist
+        Dim col As Collection : Dim aux As Collection
+        col = DBBroker.GetBroker.Read("SELECT ARTISTS.idArtist, ARTISTS.aName, ARTISTS.country, count(PLAYBACKS.song) FROM (((ARTISTS INNER JOIN ALBUMS ON ARTISTS.idArtist = ALBUMS.artist) INNER JOIN SONGS ON ALBUMS.idAlbum = SONGS.album) INNER JOIN PLAYBACKS ON SONGS.idSong = PLAYBACKS.song) GROUP BY ARTISTS.idArtist, ARTISTS.aName, ARTISTS.country ORDER BY count(PLAYBACKS.song) DESC;")
+        For Each aux In col
+            artist = New Artist(CType(aux(1).ToString, Integer))
+            artist.aName = aux(2).ToString
+            artist.country = aux(3).ToString
+            Me.Artists.Add(artist)
+        Next
+    End Sub
+
+    Public Sub ReadArtistsDate(ByVal a As Artist, ByRef iniDate As Date, ByRef endDate As Date)
+        Dim artist As Artist
+        Dim col As Collection : Dim aux As Collection
+        col = DBBroker.GetBroker.Read("SELECT ARTISTS.idArtist, ARTISTS.aName, ARTISTS.country, Count(PLAYBACKS.song) AS CuentaDesong FROM (((ARTISTS INNER JOIN ALBUMS ON ARTISTS.idArtist = ALBUMS.artist) INNER JOIN SONGS ON ALBUMS.idAlbum = SONGS.album) INNER JOIN PLAYBACKS ON SONGS.idSong = PLAYBACKS.song) WHERE PLAYBACKS.user='" & a.user.Email & "' AND PLAYBACKS.plDate BETWEEN #" & iniDate & "# AND #" & endDate & "# GROUP BY ARTISTS.idArtist, ARTISTS.aName, ARTISTS.country ORDER BY Count(PLAYBACKS.song) DESC;")
+        For Each aux In col
+            artist = New Artist(CType(aux(1).ToString, Integer))
+            artist.aName = aux(2).ToString
+            artist.country = aux(3).ToString
+            Me.Artists.Add(artist)
+        Next
+    End Sub
+
+
     Public Function InsertFav(ByVal a As Artist) As Integer
         Return DBBroker.GetBroker.Change("INSERT INTO [FAV_ARTISTS] ([user],[artist],[favDate]) VALUES ('" & a.user.Email & "'," & a.artist.idArtist & ",#" & a.favDate & "#);")
     End Function

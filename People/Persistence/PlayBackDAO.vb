@@ -31,6 +31,8 @@
         Next
     End Sub
 
+
+
     Public Sub Read(ByRef p As PlayBack)
         Dim col As Collection : Dim aux As Collection
         col = DBBroker.GetBroker.Read("SELECT * FROM PLAYBACKS WHERE idPlay='" & p.idPlay & "';")
@@ -44,7 +46,5 @@
     Public Function Insert(ByVal p As PlayBack) As Integer
         Return DBBroker.GetBroker.Change("INSERT INTO [PLAYBACKS] ([user],[song],[plDate]) VALUES ('" & p.user.Email & "'," & p.song.idSong & ",#" & p.plDate & "#);")
     End Function
-
-
 
 End Class

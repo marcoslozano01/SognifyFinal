@@ -24,7 +24,18 @@
             MessageBox.Show(ex.Message)
         End Try
         artistBox.Text = ar.aName
-        ReadAllSongsByAlbum()
+        albumLength(ReadAllSongsByAlbum())
+
+    End Sub
+
+    Private Sub albumLength(segundos As Integer)
+        Dim hor As Integer
+        Dim min As Integer
+        Dim seg As Integer
+        hor = CType(Math.Floor(segundos / 3600), Integer)
+        min = CType(Math.Floor((segundos - hor * 3600) / 60), Integer)
+        seg = segundos - (hor * 3600 + min * 60)
+        lengthTextBox.Text = hor & " h " & min & " m " & seg & " s"
     End Sub
 
     Public Sub loadCover(url As String)
@@ -38,20 +49,25 @@
 
     End Sub
 
-    Private Sub ReadAllSongsByAlbum()
+    Private Function ReadAllSongsByAlbum() As Integer
         Dim s As Song = New Song()
         Dim song As Song
+        Dim length As Integer
+        length = 0
         Try
             s.ReadAllSongsByAlbum(filePath, album)
             For Each song In s.SongDAO.songs
                 songsBox.Items.Add(song.sName)
+                length += song.length
             Next
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-    End Sub
+        Return length
+    End Function
 
     Private Sub backButton_Click(sender As Object, e As EventArgs) Handles backButton.Click
         Hide()
     End Sub
+
 End Class

@@ -22,11 +22,17 @@
     Public Sub ReadAllUsers(path As String)
         Me.UserDAO.ReadAll(path)
     End Sub
+    Public Function ReadTotalTime() As Integer
+        Return Me.UserDAO.ReadTotalTime(Me)
+    End Function
 
     Public Sub ReadUser()
         Me.UserDAO.Read(Me)
     End Sub
 
+    Public Sub readUserShort()
+        Me.UserDAO.ReadUsersSort()
+    End Sub
     Public Function DeleteUser() As Integer
         Return Me.UserDAO.Delete(Me)
     End Function
