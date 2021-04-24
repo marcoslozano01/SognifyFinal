@@ -68,17 +68,6 @@
         Next
     End Sub
 
-    Public Sub ReadByName(ByRef a As Artist)
-        Dim col As Collection : Dim aux As Collection
-        col = DBBroker.GetBroker.Read("SELECT * FROM ARTISTS WHERE aName='" & a.aName & "';")
-        For Each aux In col
-            a.idArtist = CType(aux(1).ToString, Integer)
-            a.country = aux(3).ToString
-            a.image = aux(4).ToString
-        Next
-    End Sub
-
-
     Public Function InsertFav(ByVal a As Artist) As Integer
         Return DBBroker.GetBroker.Change("INSERT INTO [FAV_ARTISTS] ([user],[artist],[favDate]) VALUES ('" & a.user.Email & "'," & a.artist.idArtist & ",#" & a.favDate & "#);")
     End Function
@@ -98,7 +87,6 @@
     Public Function DeleteFav(ByVal a As Artist) As Integer
         Return DBBroker.GetBroker.Change("DELETE FROM [FAV_ARTISTS] WHERE user='" & a.user.Email & "' AND artist=" & a.artist.idArtist & ";")
     End Function
-
 
     Public Function Update(ByVal a As Artist) As Integer
         Return DBBroker.GetBroker.Change("UPDATE [ARTISTS] SET [aName]='" & a.aName & "', [country]='" & a.country & "', [image]='" & a.image & "' WHERE [idArtist]=" & a.idArtist & ";")

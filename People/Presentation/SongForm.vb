@@ -8,7 +8,11 @@
     End Sub
     Private Sub SongForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         BoxName.Text = song.sName
-        song.album.ReadAlbum()
+        Try
+            song.album.ReadAlbum()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
         BoxAlbum.Text = song.album.aName
         songLength(song.length)
     End Sub
@@ -28,10 +32,7 @@
         playBack.song = song
         playBack.plDate = DateTime.Now.ToString("dd/MM/yyyy")
         Try
-            If playBack.InsertPlayBack() <> 1 Then
-                MessageBox.Show("The id already exists")
-                Exit Sub
-            End If
+            playBack.InsertPlayBack()
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try

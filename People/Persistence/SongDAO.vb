@@ -43,15 +43,6 @@
         Next
     End Sub
 
-    Public Sub ReadByName(ByRef s As Song)
-        Dim col As Collection : Dim aux As Collection
-        col = DBBroker.GetBroker.Read("SELECT * FROM SONGS WHERE sName='" & s.sName & "';")
-        For Each aux In col
-            s.idSong = CType(aux(1).ToString, Integer)
-            s.album = New Album(CType(aux(3).ToString, Integer))
-            s.length = CType(aux(4).ToString, Integer)
-        Next
-    End Sub
     Public Sub ReadAllByAlbum(ByRef a As Album, path As String)
         Dim S As Song
         Dim col, aux As Collection
@@ -68,11 +59,6 @@
     Public Function Insert(ByVal s As Song) As Integer
         Return DBBroker.GetBroker.Change("INSERT INTO [SONGS] ([sName],[Album],[length]) VALUES ('" & s.sName & "'," & s.album.idAlbum & "," & s.length & ");")
     End Function
-
-    Public Function DeleteByAlbum(ByVal s As Song) As Integer
-        Return DBBroker.GetBroker.Change("DELETE FROM SONGS WHERE Album=" & s.album.idAlbum & ";")
-    End Function
-
     Public Function Delete(ByVal s As Song) As Integer
         Dim columns As Integer
         columns = DBBroker.GetBroker.Change("Delete * From PLAYBACKS Where Exists( Select 1 From SONGS Where PLAYBACKS.song=" & s.idSong & ") = True;")

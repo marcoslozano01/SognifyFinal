@@ -35,94 +35,90 @@ Partial Class SearcherForm
         '
         'SearcherTextBox
         '
-        Me.SearcherTextBox.Location = New System.Drawing.Point(199, 32)
-        Me.SearcherTextBox.Margin = New System.Windows.Forms.Padding(2)
+        Me.SearcherTextBox.Location = New System.Drawing.Point(298, 49)
         Me.SearcherTextBox.Name = "SearcherTextBox"
-        Me.SearcherTextBox.Size = New System.Drawing.Size(135, 20)
+        Me.SearcherTextBox.Size = New System.Drawing.Size(200, 26)
         Me.SearcherTextBox.TabIndex = 0
         '
         'textSearcher
         '
         Me.textSearcher.AutoSize = True
-        Me.textSearcher.Location = New System.Drawing.Point(199, 8)
-        Me.textSearcher.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.textSearcher.Location = New System.Drawing.Point(298, 12)
         Me.textSearcher.Name = "textSearcher"
-        Me.textSearcher.Size = New System.Drawing.Size(50, 13)
+        Me.textSearcher.Size = New System.Drawing.Size(74, 20)
         Me.textSearcher.TabIndex = 1
         Me.textSearcher.Text = "Searcher"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(56, 77)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label1.Location = New System.Drawing.Point(84, 118)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(35, 13)
+        Me.Label1.Size = New System.Drawing.Size(54, 20)
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "Artists"
         '
         'ListArtists
         '
         Me.ListArtists.FormattingEnabled = True
-        Me.ListArtists.Location = New System.Drawing.Point(25, 105)
-        Me.ListArtists.Margin = New System.Windows.Forms.Padding(2)
+        Me.ListArtists.ItemHeight = 20
+        Me.ListArtists.Location = New System.Drawing.Point(38, 162)
         Me.ListArtists.Name = "ListArtists"
-        Me.ListArtists.Size = New System.Drawing.Size(125, 69)
+        Me.ListArtists.Size = New System.Drawing.Size(186, 104)
         Me.ListArtists.TabIndex = 3
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(241, 77)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label2.Location = New System.Drawing.Point(362, 118)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(37, 13)
+        Me.Label2.Size = New System.Drawing.Size(55, 20)
         Me.Label2.TabIndex = 4
         Me.Label2.Text = "Songs"
         '
         'ListSongs
         '
         Me.ListSongs.FormattingEnabled = True
-        Me.ListSongs.Location = New System.Drawing.Point(201, 105)
-        Me.ListSongs.Margin = New System.Windows.Forms.Padding(2)
+        Me.ListSongs.ItemHeight = 20
+        Me.ListSongs.Location = New System.Drawing.Point(302, 162)
         Me.ListSongs.Name = "ListSongs"
-        Me.ListSongs.Size = New System.Drawing.Size(125, 69)
+        Me.ListSongs.Size = New System.Drawing.Size(186, 104)
         Me.ListSongs.TabIndex = 5
         '
         'ListAlbums
         '
         Me.ListAlbums.FormattingEnabled = True
-        Me.ListAlbums.Location = New System.Drawing.Point(377, 105)
-        Me.ListAlbums.Margin = New System.Windows.Forms.Padding(2)
+        Me.ListAlbums.ItemHeight = 20
+        Me.ListAlbums.Location = New System.Drawing.Point(566, 162)
         Me.ListAlbums.Name = "ListAlbums"
-        Me.ListAlbums.Size = New System.Drawing.Size(125, 69)
+        Me.ListAlbums.Size = New System.Drawing.Size(186, 104)
         Me.ListAlbums.TabIndex = 6
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(411, 77)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label3.Location = New System.Drawing.Point(616, 118)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(41, 13)
+        Me.Label3.Size = New System.Drawing.Size(62, 20)
         Me.Label3.TabIndex = 7
         Me.Label3.Text = "Albums"
         '
         'backButton
         '
-        Me.backButton.Location = New System.Drawing.Point(25, 12)
+        Me.backButton.Location = New System.Drawing.Point(38, 18)
+        Me.backButton.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.backButton.Name = "backButton"
-        Me.backButton.Size = New System.Drawing.Size(35, 22)
+        Me.backButton.Size = New System.Drawing.Size(52, 34)
         Me.backButton.TabIndex = 8
         Me.backButton.Text = "<--"
         Me.backButton.UseVisualStyleBackColor = True
         '
         'SearcherForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Lime
-        Me.ClientSize = New System.Drawing.Size(533, 234)
+        Me.ClientSize = New System.Drawing.Size(800, 360)
         Me.Controls.Add(Me.backButton)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.ListAlbums)
@@ -132,7 +128,6 @@ Partial Class SearcherForm
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.textSearcher)
         Me.Controls.Add(Me.SearcherTextBox)
-        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "SearcherForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Songify"

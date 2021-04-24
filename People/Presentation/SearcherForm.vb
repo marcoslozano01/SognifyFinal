@@ -40,28 +40,47 @@
 
     End Sub
     Private Sub ListSongs_DoubleClick(sender As Object, e As EventArgs) Handles ListSongs.DoubleClick
-        Dim song As Song
-        song = CType(ListSongs.SelectedItem, Song)
-        Dim f As Form = New SongForm(song, user)
-        f.Show()
+        If ListSongs.SelectedItem IsNot Nothing Then
+            Dim song As Song
+            Try
+                song = CType(ListSongs.SelectedItem, Song)
+            Catch ex As Exception
+                MessageBox.Show(ex.Message)
+            End Try
+            Dim f As Form = New SongForm(song, user)
+            f.Show()
+        End If
     End Sub
 
     Private Sub ListArtists_DoubleClick(sender As Object, e As EventArgs) Handles ListArtists.DoubleClick
-        Dim artist As Artist
-        artist = CType(ListArtists.SelectedItem, Artist)
-        Dim f As Form = New ArtistForm(artist, user, filePath)
-        f.Show()
+        If ListArtists.SelectedItem IsNot Nothing Then
+            Dim artist As Artist
+            Try
+                artist = CType(ListArtists.SelectedItem, Artist)
+            Catch ex As Exception
+                MessageBox.Show(ex.Message)
+            End Try
+            Dim f As Form = New ArtistForm(artist, user, filePath)
+            f.Show()
+        End If
     End Sub
 
     Private Sub ListAlbums_DoubleClick(sender As Object, e As EventArgs) Handles ListAlbums.DoubleClick
-        Dim album As Album
-        album = CType(ListAlbums.SelectedItem, Album)
-        Dim f As Form = New AlbumForm(album, user, filePath)
-        f.Show()
+        If ListAlbums.SelectedItem IsNot Nothing Then
+            Dim album As Album
+            Try
+                album = CType(ListAlbums.SelectedItem, Album)
+            Catch ex As Exception
+                MessageBox.Show(ex.Message)
+            End Try
+            Dim f As Form = New AlbumForm(album, user, filePath)
+            f.Show()
+        End If
     End Sub
 
     Private Sub backButton_Click(sender As Object, e As EventArgs) Handles backButton.Click
         loginForm.Show()
         Hide()
     End Sub
+
 End Class

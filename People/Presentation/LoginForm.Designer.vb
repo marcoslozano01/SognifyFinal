@@ -53,6 +53,8 @@ Partial Class loginForm
         Me.Songify = New System.Windows.Forms.Label()
         Me.albumBox = New System.Windows.Forms.ComboBox()
         Me.ArtistBox = New System.Windows.Forms.ComboBox()
+        Me.imageLabel = New System.Windows.Forms.Label()
+        Me.imageBox = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'ListBox
@@ -130,7 +132,7 @@ Partial Class loginForm
         '
         'coverBox
         '
-        Me.coverBox.Location = New System.Drawing.Point(624, 238)
+        Me.coverBox.Location = New System.Drawing.Point(620, 213)
         Me.coverBox.Name = "coverBox"
         Me.coverBox.Size = New System.Drawing.Size(176, 26)
         Me.coverBox.TabIndex = 51
@@ -138,7 +140,7 @@ Partial Class loginForm
         'coverLabel
         '
         Me.coverLabel.AutoSize = True
-        Me.coverLabel.Location = New System.Drawing.Point(530, 242)
+        Me.coverLabel.Location = New System.Drawing.Point(534, 213)
         Me.coverLabel.Name = "coverLabel"
         Me.coverLabel.Size = New System.Drawing.Size(50, 20)
         Me.coverLabel.TabIndex = 50
@@ -147,7 +149,7 @@ Partial Class loginForm
         'artistLabel
         '
         Me.artistLabel.AutoSize = True
-        Me.artistLabel.Location = New System.Drawing.Point(536, 188)
+        Me.artistLabel.Location = New System.Drawing.Point(538, 180)
         Me.artistLabel.Name = "artistLabel"
         Me.artistLabel.Size = New System.Drawing.Size(46, 20)
         Me.artistLabel.TabIndex = 48
@@ -313,11 +315,27 @@ Partial Class loginForm
         'ArtistBox
         '
         Me.ArtistBox.FormattingEnabled = True
-        Me.ArtistBox.Location = New System.Drawing.Point(621, 188)
+        Me.ArtistBox.Location = New System.Drawing.Point(620, 177)
         Me.ArtistBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.ArtistBox.Name = "ArtistBox"
         Me.ArtistBox.Size = New System.Drawing.Size(180, 28)
         Me.ArtistBox.TabIndex = 63
+        '
+        'imageLabel
+        '
+        Me.imageLabel.AutoSize = True
+        Me.imageLabel.Location = New System.Drawing.Point(534, 250)
+        Me.imageLabel.Name = "imageLabel"
+        Me.imageLabel.Size = New System.Drawing.Size(81, 30)
+        Me.imageLabel.TabIndex = 64
+        Me.imageLabel.Text = "Image"
+        '
+        'imageBox
+        '
+        Me.imageBox.Location = New System.Drawing.Point(620, 250)
+        Me.imageBox.Name = "imageBox"
+        Me.imageBox.Size = New System.Drawing.Size(176, 26)
+        Me.imageBox.TabIndex = 65
         '
         'loginForm
         '
@@ -325,6 +343,8 @@ Partial Class loginForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(824, 480)
+        Me.Controls.Add(Me.imageBox)
+        Me.Controls.Add(Me.imageLabel)
         Me.Controls.Add(Me.ArtistBox)
         Me.Controls.Add(Me.albumBox)
         Me.Controls.Add(Me.Songify)
@@ -395,4 +415,6 @@ Partial Class loginForm
     Friend WithEvents Songify As Label
     Friend WithEvents albumBox As ComboBox
     Friend WithEvents ArtistBox As ComboBox
+    Friend WithEvents imageLabel As Label
+    Friend WithEvents imageBox As TextBox
 End Class

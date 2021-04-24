@@ -18,7 +18,11 @@
         nameTextbox.Text = album.aName
         releaseTextBox.Text = album.releaseDate
         loadCover(album.cover)
-        ar.ReadArtist()
+        Try
+            ar.ReadArtist()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
         artistBox.Text = ar.aName
         ReadAllSongsByAlbum()
     End Sub
@@ -37,8 +41,8 @@
     Private Sub ReadAllSongsByAlbum()
         Dim s As Song = New Song()
         Dim song As Song
-        s.ReadAllSongsByAlbum(filePath, album)
         Try
+            s.ReadAllSongsByAlbum(filePath, album)
             For Each song In s.SongDAO.songs
                 songsBox.Items.Add(song.sName)
             Next
