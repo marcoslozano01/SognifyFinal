@@ -102,6 +102,7 @@
 
     Public Function Delete(ByVal a As Artist) As Integer
         Dim columns As Integer
+        columns += DBBroker.GetBroker.Change("DELETE DISTINCTROW FAV_ARTISTS.* FROM FAV_ARTISTS INNER JOIN ARTISTS  ON FAV_ARTISTS.artist = ARTISTS.IdArtist WHERE ARTISTS.IdArtist=" & a.idArtist & ";")
         columns += DBBroker.GetBroker.Change("DELETE DISTINCTROW PLAYBACKS.* FROM ((PLAYBACKS INNER JOIN SONGS  ON PLAYBACKS.song = SONGS.IdSong) INNER JOIN ALBUMS ON SONGS.Album= ALBUMS.IdAlbum) INNER JOIN ARTISTS ON ALBUMS.Artist= ARTISTS.IdArtist WHERE ARTISTS.IdArtist=" & a.idArtist & ";")
         columns += DBBroker.GetBroker.Change("DELETE DISTINCTROW SONGS.* FROM (SONGS INNER JOIN ALBUMS ON SONGS.Album = ALBUMS.IdAlbum) INNER JOIN ARTISTS ON ALBUMS.Artist = ARTISTS.IdArtist WHERE ARTISTS.IdArtist=" & a.idArtist & ";")
         columns += DBBroker.GetBroker.Change("Delete * From AlBUMS Where Exists( Select 1 From ARTISTS Where ALBUMS.Artist =" & a.idArtist & ") = True;")
