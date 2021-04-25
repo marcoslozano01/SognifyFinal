@@ -22,7 +22,7 @@
     Public Sub ReadAllUsers(path As String)
         Me.UserDAO.ReadAll(path)
     End Sub
-    Public Function ReadTotalTime() As Integer
+    Public Function ReadTotalTime() As String
         Return Me.UserDAO.ReadTotalTime(Me)
     End Function
 

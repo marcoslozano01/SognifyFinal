@@ -18,12 +18,12 @@
             Me.Users.Add(u)
         Next
     End Sub
-    Public Function ReadTotalTime(ByRef u As User) As Integer
-        Dim s As Integer
+    Public Function ReadTotalTime(ByRef u As User) As String
+        Dim s As String
         Dim col As Collection : Dim aux As Collection
         col = DBBroker.GetBroker.Read("SELECT Sum(SONGS.length) FROM (((FAV_ARTISTS INNER JOIN ALBUMS ON FAV_ARTISTS.artist = ALBUMS.artist) INNER JOIN SONGS ON ALBUMS.idAlbum = SONGS.album) INNER JOIN PLAYBACKS ON SONGS.idSong = PLAYBACKS.song) WHERE PLAYBACKS.user='" & u.Email & "' ORDER BY count(SONGS.length) DESC;")
         For Each aux In col
-            s = CType(aux(1).ToString, Integer)
+            s = aux(1).ToString
         Next
         Return s
     End Function

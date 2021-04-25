@@ -132,7 +132,11 @@
 
     Private Sub PBTimeOfFav_Click(sender As Object, e As EventArgs) Handles PBTimeOfFav.Click
         Try
-            MessageBox.Show(secondsLength(user.ReadTotalTime))
+            If user.ReadTotalTime = "" Then
+                MessageBox.Show(secondsLength(0))
+            Else
+                MessageBox.Show(secondsLength(CType(user.ReadTotalTime, Integer)))
+            End If
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
